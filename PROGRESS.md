@@ -1,7 +1,7 @@
 ---
 type: project
 status: active
-progress: 95
+progress: 100
 created: 2026-09-01
 updated: 2026-09-01
 docs:
@@ -32,7 +32,7 @@ docs:
 
 ## 当前状态
 
-开发 + GitHub 发布 + 九件套互链 + ClawHub 提交完成（95%）：DESIGN.md、hero.svg（三重校验）、LICENSE、README 双语齐备；GitHub `dtsola/xiaoyaoclaw-commander` 已公开（public/main/MIT/5 topics/中英 description）；SKILL.md 已对齐 kb-retriever 安全格式（权限透明 + 边界承诺 + 禁止行为，敏感扫描 CLEAN）；九件套 README 互链闭环（8 仓库 16 个 README）；**ClawHub v1.0.0 已提交（pending-publication，显示名 OpenClaw Cross-Tool Commander，versionId k973d99vf7s5a2wqydq3z2mqbs8dka6x），公开由指挥官操作**。剩余：ClawHub 公开后验证。
+**全部完成（100%）**：开发 + GitHub 发布 + 九件套互链 + ClawHub 提交并公开。GitHub `dtsola/xiaoyaoclaw-commander`（public/main/MIT）；ClawHub `xiaoyaoclaw-commander` **v1.0.1 已公开**（OpenClaw Cross-Tool Commander，安全扫描 clean，topics×5 生效，description 定稿版「Drive OpenClaw with Claude Code/Codex/etc」）。九件套生态闭环完成。
 
 ## 进度日志
 
@@ -44,7 +44,10 @@ docs:
 - 2026-09-01 15:00-15:03：**SKILL.md 安全格式对齐**——按 kb-retriever 格式新增「能力范围与写操作声明（权限透明）」（身份/涉及操作/边界承诺）+「禁止行为」5 条红线 + GitHub/小遥Claw 引用块；frontmatter YAML 校验通过 + 全项目敏感信息扫描 CLEAN
 - 2026-09-01 15:04-15:08：**九件套 README 互链闭环**——8 仓库 16 个 README（中英）全部追加 commander 姊妹项目条目；「七件套/八件套/on top of the seven」标注统一为九件套/生态；全部 push 成功
 - 2026-09-01 15:12-15:14：**显示名定案 + description 调整**——指挥官定名 **OpenClaw Cross-Tool Commander**（否决长名「For Claude Code / Codex etc」）；SKILL.md description 改为英文在前中文在后；README 双语 + hero.svg 同步；push f6fecff
-- 2026-09-01 15:16：**ClawHub v1.0.0 提交成功**——显示名 OpenClaw Cross-Tool Commander，categories automation/agents/productivity，topics multi-agent/orchestration/cli/agent-skills/command，source f6fecff，versionId k973d99vf7s5a2wqydq3z2mqbs8dka6x，**pending-publication 等安全扫描，公开由指挥官操作**
+- 2026-09-01 15:16：**ClawHub v1.0.0 提交**——categories automation/agents/productivity，topics multi-agent/orchestration/cli/agent-skills/command，source f6fecff，versionId k973d99vf7s5a2wqydq3z2mqbs8dka6x
+- 2026-09-01 15:21-15:31：**description 直白化三轮迭代**——指挥官要求「非常直白」：版本 A 定稿「Drive OpenClaw with Claude Code, Codex, OpenCode, Trae, DSH etc. — command the gateway, its agents and channels, from any Agent Skills tool. 中文：用 Claude Code / Codex / OpenCode / Trae / DSH 等工具驱动 OpenClaw 干活——从任意支持 Agent Skills 的工具指挥网关、agent 和通道」；push 953bf2c
+- 2026-09-01 15:32-15:33：**ClawHub v1.0.1 提交**（新描述版，versionId k97164bawvj5835kw1bv07h4zs8dk8ym）
+- 2026-09-01 15:35：**ClawHub 公开 ✅（指挥官操作）**——线上验证通过：显示名/描述/topics×5/latest 1.0.1/安全扫描 clean（scanner.llm.clean）；**九件套全部公开，生态闭环完成**
 
 ## 文档索引
 
