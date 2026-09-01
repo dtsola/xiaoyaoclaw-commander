@@ -1,7 +1,7 @@
 ---
 type: project
 status: active
-progress: 80
+progress: 95
 created: 2026-09-01
 updated: 2026-09-01
 docs:
@@ -32,7 +32,7 @@ docs:
 
 ## 当前状态
 
-开发 + GitHub 发布 + 九件套互链完成（80%）：DESIGN.md、hero.svg（三重校验）、LICENSE、README 双语齐备；GitHub `dtsola/xiaoyaoclaw-commander` 已公开（public/main/MIT/5 topics/中英 description）；SKILL.md 已对齐 kb-retriever 安全格式（权限透明 + 边界承诺 + 禁止行为，敏感扫描 CLEAN）；**九件套 README 互链闭环**（8 仓库 16 个 README 全部加 commander 条目 + 套数标注统一为九件套/生态）。待办：ClawHub 提交（等指挥官指令）。
+开发 + GitHub 发布 + 九件套互链 + ClawHub 提交完成（95%）：DESIGN.md、hero.svg（三重校验）、LICENSE、README 双语齐备；GitHub `dtsola/xiaoyaoclaw-commander` 已公开（public/main/MIT/5 topics/中英 description）；SKILL.md 已对齐 kb-retriever 安全格式（权限透明 + 边界承诺 + 禁止行为，敏感扫描 CLEAN）；九件套 README 互链闭环（8 仓库 16 个 README）；**ClawHub v1.0.0 已提交（pending-publication，显示名 OpenClaw Cross-Tool Commander，versionId k973d99vf7s5a2wqydq3z2mqbs8dka6x），公开由指挥官操作**。剩余：ClawHub 公开后验证。
 
 ## 进度日志
 
@@ -43,6 +43,8 @@ docs:
 - 2026-09-01 14:55-14:58：**README 对齐 + 通用化**——README 对齐 memory-distill 结构（hero/徽章/为什么需要它/特性/安装/快速上手/对比表/目录结构/定制广告/交流群/姊妹项目）；「为什么需要它」通用化（面向所有想用外部智能体操作 OpenClaw/小遥Claw 的用户）；community-qr.png 补齐
 - 2026-09-01 15:00-15:03：**SKILL.md 安全格式对齐**——按 kb-retriever 格式新增「能力范围与写操作声明（权限透明）」（身份/涉及操作/边界承诺）+「禁止行为」5 条红线 + GitHub/小遥Claw 引用块；frontmatter YAML 校验通过 + 全项目敏感信息扫描 CLEAN
 - 2026-09-01 15:04-15:08：**九件套 README 互链闭环**——8 仓库 16 个 README（中英）全部追加 commander 姊妹项目条目；「七件套/八件套/on top of the seven」标注统一为九件套/生态；全部 push 成功
+- 2026-09-01 15:12-15:14：**显示名定案 + description 调整**——指挥官定名 **OpenClaw Cross-Tool Commander**（否决长名「For Claude Code / Codex etc」）；SKILL.md description 改为英文在前中文在后；README 双语 + hero.svg 同步；push f6fecff
+- 2026-09-01 15:16：**ClawHub v1.0.0 提交成功**——显示名 OpenClaw Cross-Tool Commander，categories automation/agents/productivity，topics multi-agent/orchestration/cli/agent-skills/command，source f6fecff，versionId k973d99vf7s5a2wqydq3z2mqbs8dka6x，**pending-publication 等安全扫描，公开由指挥官操作**
 
 ## 文档索引
 
