@@ -15,13 +15,14 @@
 
 ## 为什么需要它
 
-小遥Claw 桌面版把 openclaw 内嵌在应用目录（不在 PATH），且 agent 配置靠 `OPENCLAW_STATE_DIR` / `OPENCLAW_CONFIG_PATH` 环境变量定位（桌面版只在自身进程注入）。在终端 / Claude Code / Codex 里直接用 openclaw 会：
-- ❌ **找不到命令**：二进制不在 PATH，`openclaw` 直接报 not found
-- ❌ **只剩 main**：环境变量缺失，`agents list` 看不到真实的 7 个 agent
+Claude Code、Codex、OpenCode、Trae、DSH 等智能体工具能帮你写代码、跑任务，而你的 OpenClaw / 小遥Claw 里住着一群 agent（天桐、小光、小智……）和多条通道（飞书、Telegram……）。**想让外部智能体直接指挥 OpenClaw**，会遇到：
+
+- ❌ **找不到命令**：openclaw 不在 PATH（桌面版内嵌在应用目录），直接敲报 not found
+- ❌ **看不到真实 agent**：环境变量缺失，`agents list` 只剩 `main`，7 个 agent 全隐身
 - ❌ **任务跑错人**：不指定 `--agent` 时按默认 agent 兜底，任务可能发错对象
 - ❌ **路径写死**：换了安装位置/平台，写死的路径就失效
 
-这个 skill 一次性解决：**动态探测 + 环境变量补齐 + 强制显式 agent + 跨工具通用**。
+这个 skill 提供**标准化的指挥通道**：动态探测 + 环境变量补齐 + 强制显式 agent + 跨工具通用——任何支持 Agent Skills 的工具都能一键指挥 OpenClaw / 小遥Claw。
 
 ## 特性
 

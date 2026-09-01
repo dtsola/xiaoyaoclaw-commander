@@ -13,13 +13,14 @@
 
 ## Why you need it
 
-The XiaoyaoClaw desktop app embeds openclaw in its app directory (not on PATH), and agent config is located via `OPENCLAW_STATE_DIR` / `OPENCLAW_CONFIG_PATH` env vars (injected only in the desktop app's own process). Using openclaw directly from a terminal / Claude Code / Codex:
-- ❌ **Command not found** — binary not on PATH, `openclaw` errors out
-- ❌ **Only `main` visible** — env vars missing, `agents list` hides your real agents
+Claude Code, Codex, OpenCode, Trae, DSH and other agent tools help you write code and run tasks — while your OpenClaw / XiaoyaoClaw hosts a fleet of agents (tiantong, xiaoguang, xiaozhi...) and multiple channels (Feishu, Telegram...). **When you want an external agent to command OpenClaw directly**, you run into:
+
+- ❌ **Command not found** — openclaw is not on PATH (desktop app embeds it), plain `openclaw` errors out
+- ❌ **Real agents invisible** — env vars missing, `agents list` shows only `main`
 - ❌ **Task goes to the wrong agent** — without `--agent`, it falls back to the default agent
 - ❌ **Hardcoded paths** — break when the install location or platform changes
 
-This skill solves it all in one go: **dynamic detection + env-var filling + explicit-agent enforcement + cross-tool universality**.
+This skill provides a **standardized command channel**: dynamic detection + env-var filling + explicit-agent enforcement + cross-tool universality — any Agent Skills tool can command OpenClaw / XiaoyaoClaw in one go.
 
 ## Features
 
