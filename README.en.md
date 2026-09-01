@@ -1,89 +1,148 @@
-# xiaoyaoclaw-commander
+# XiaoyaoClaw Commander 🎛️
 
-> 9th suite skill: **cross-tool command layer** — command your local XiaoyaoClaw / OpenClaw multi-agent system from any Agent Skills-compatible tool.
+> Drive your XiaoyaoClaw/OpenClaw gateway from any Agent Skills tool — Claude Code, Codex, OpenCode, Trae, DSH and more.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+<p align="center">
+  <img src="./assets/readme/hero.svg" width="100%" alt="XiaoyaoClaw Commander — cross-tool command layer: drive XiaoyaoClaw/OpenClaw gateway from any Agent Skills tool (Claude Code/Codex/OpenCode/Trae/DSH) via openclaw CLI">
+</p>
 
-## What is this
+> Command your local XiaoyaoClaw / OpenClaw multi-agent system from any Agent Skills-compatible tool.
+> Cross-tool command layer — drive the OpenClaw gateway from Claude Code, Codex, OpenCode, Trae, DSH.
 
-An **Agent Skills standard skill** that drives your local XiaoyaoClaw / OpenClaw gateway through the openclaw CLI:
+![license](https://img.shields.io/badge/license-MIT-green)
 
-- **Run tasks**: `openclaw agent -m "<task>" --agent <id> --json` — let any agent (tiantong / xiaoguang / xiaozhi ...) do the work
-- **Send messages**: `openclaw message send --channel feishu -t <id> -m "..."` — via Feishu / Telegram / etc.
-- **Check status**: `openclaw health` / `openclaw agents list` / `openclaw sessions`
+## Why you need it
 
-**Works in any tool supporting Agent Skills**: Claude Code / Codex / OpenCode / Trae / DSH — the openclaw commands are fully universal, no per-tool customization needed.
+The XiaoyaoClaw desktop app embeds openclaw in its app directory (not on PATH), and agent config is located via `OPENCLAW_STATE_DIR` / `OPENCLAW_CONFIG_PATH` env vars (injected only in the desktop app's own process). Using openclaw directly from a terminal / Claude Code / Codex:
+- ❌ **Command not found** — binary not on PATH, `openclaw` errors out
+- ❌ **Only `main` visible** — env vars missing, `agents list` hides your real agents
+- ❌ **Task goes to the wrong agent** — without `--agent`, it falls back to the default agent
+- ❌ **Hardcoded paths** — break when the install location or platform changes
 
-## Why
+This skill solves it all in one go: **dynamic detection + env-var filling + explicit-agent enforcement + cross-tool universality**.
 
-The XiaoyaoClaw desktop app embeds openclaw in its app directory (not on PATH), and agent config is located via `OPENCLAW_STATE_DIR` / `OPENCLAW_CONFIG_PATH` env vars (injected only in the desktop app's own process). Running openclaw from a terminal fails to find the binary, and `agents list` shows only `main`.
+## Features
 
-This skill solves three things:
-
-1. **Dynamically locates** the openclaw binary (cross-platform, no hardcoded paths)
-2. **Fills in env vars** so terminals / external tools see all real agents
-3. **Maps agent names ↔ ids**, enforcing explicit `--agent` (no default agent)
+- 🔍 **Dynamic detection** — multi-level probing for the openclaw binary on Windows / macOS / Linux (XiaoyaoClaw desktop → PATH → vanilla desktop → local prefixes), no hardcoded paths
+- 🧩 **Auto env-var filling** — derives `OPENCLAW_STATE_DIR` / `OPENCLAW_CONFIG_PATH` for desktop installs, so external tools see all real agents
+- 🎯 **Explicit agent required** — `--agent` is mandatory; if the user doesn't name one, ask first — never fall back to a default
+- 🌐 **Agent name mapping** — Chinese/English/emoji names ↔ ids resolved via the `Identity` field of `agents list`; if no match, ask — never guess
+- 🧰 **Cross-tool universal** — works in any tool supporting Agent Skills (Claude Code / Codex / OpenCode / Trae / DSH), commands are fully generic
+- 🔌 **Version-agnostic** — works on older openclaw (v2026.3.x) without `mcp`/`migrate`; defers to `--help`
+- 🛡️ **No stored credentials** — no tokens/keys in the skill; gateway credentials come from the environment
 
 ## Install
 
-Copy the `SKILL.md` folder into your tool's skills directory:
-
-| Tool | Skills directory |
-|------|-----------------|
-| Claude Code | `~/.claude/skills/xiaoyaoclaw-commander/` |
-| Codex | `~/.codex/skills/xiaoyaoclaw-commander/` |
-| OpenCode | see its Agent Skills docs |
-| Trae | see its Agent Skills docs |
-| DSH | see its Agent Skills docs |
-| Any other Agent Skills tool | its skills directory |
-
-## Quick start
-
 ```bash
-# List agents (with Chinese identities)
-openclaw agents list
-
-# Ask tiantong to research X (agent must be explicit!)
-openclaw agent -m "Research X, output a report" --agent tiantong --json
-
-# Send a Feishu message
-openclaw message send --channel feishu --target <user/chat id> -m "Hello"
+# Manually from GitHub
+git clone https://github.com/dtsola/xiaoyaoclaw-commander
+# Copy the SKILL.md folder into your tool's skills directory:
+#   Claude Code → ~/.claude/skills/
+#   Codex       → ~/.codex/skills/
+#   Others      → corresponding Agent Skills directory
 ```
 
-> ⚠️ **Hard rule**: `--agent` is mandatory — if the user doesn't say who should do it, ask first. Never fall back to a default agent. Agent names (any language/emoji) are resolved via the `Identity` field of `agents list`; if no match, ask the user — never guess.
+> No need to install into OpenClaw's skills directory — this skill is for **external tools** commanding OpenClaw.
 
-## Project layout
+## Usage
+
+1. Put the skill in your tool's skills directory (Claude Code / Codex / OpenCode / Trae / DSH...)
+2. Tell the tool "**have tiantong research X**" or "**send a Feishu message via OpenClaw**" — the skill will:
+   - Detect the openclaw binary + fill in env vars
+   - Map the agent name to its id via `agents list`
+   - Run tasks / send messages / check status through the Gateway
+3. Query commands: "list the OpenClaw agents", "is the gateway healthy?"
+
+## 🚀 Quick Start (3 steps, 5 minutes)
+
+### Step 1: Install the skill
+
+```bash
+git clone https://github.com/dtsola/xiaoyaoclaw-commander
+# Windows: copy to %USERPROFILE%\.claude\skills\xiaoyaoclaw-commander\
+# macOS:   copy to ~/.claude/skills/xiaoyaoclaw-commander/
+```
+
+### Step 2: Delegate a task
+
+Tell your Claude Code / Codex:
+
+> Have tiantong research the release workflow of the xiaoyaoclaw ecosystem
+
+The tool will: detect openclaw → fill env vars → map "天桐" via `agents list` → tiantong → `openclaw agent -m "..." --agent tiantong --json` → return the result.
+
+### Step 3: Verify + more capabilities
+
+- List agents: "which OpenClaw agents exist?" → `openclaw agents list` (with Chinese identities)
+- Send a channel message: "send a Feishu message: xxx" → `openclaw message send --channel feishu -t <id> -m "..."`
+- Check status: "is the OpenClaw gateway healthy?" → `openclaw health`
+
+### Daily habits
+
+| Scenario | Action |
+|---|---|
+| Delegate to a specific agent | "Have <name> do X" → auto-mapped id |
+| Cross-channel notifications | "send via Feishu/Telegram" → `message send` |
+| Team collaboration | `agents list` first to see who's available |
+| Unknown agent name | The skill checks Identity and confirms — never guesses |
+
+## How it compares
+
+| | Raw terminal | openclaw mcp serve | **xiaoyaoclaw-commander** |
+|---|---|---|---|
+| Binary location | manual, error-prone | needs new runtime | ✅ dynamic detection |
+| Env vars | manual | needs setup | ✅ auto-filled |
+| Runtime version | any | needs v2026.8+ | ✅ any version |
+| Agent selection | default fallback risk | DIY | ✅ explicit + name mapping |
+| Tool support | terminal only | MCP clients only | ✅ any Agent Skills tool |
+| Skill standard | — | — | ✅ Agent Skills open standard |
+
+## Directory structure
 
 ```
 xiaoyaoclaw-commander/
-├── SKILL.md          # Skill body (any Agent Skills tool)
+├── SKILL.md                    # the skill itself (detection + env vars + command reference)
 ├── docs/
-│   ├── research-report-claude-code-openclaw.md   # Research (MCP/ACP/CLI paths)
-│   └── research-00-problem-decomposition.md      # Problem decomposition
-└── PROGRESS.md       # Project progress card
+│   ├── DESIGN.md               # design document
+│   ├── research-report-claude-code-openclaw.md   # research report
+│   └── research-00-problem-decomposition.md      # problem decomposition
+├── README.md
+└── LICENSE
 ```
-
-## Design highlights
-
-- **No hardcoded paths**: multi-level probing on Windows / macOS / Linux (XiaoyaoClaw desktop → PATH → vanilla desktop → local prefixes)
-- **Auto env var filling**: derives state dir for desktop installs
-- **Universal commands**: only the invocation prefix differs (PowerShell `& $oc` / bash `"$OC"`), arguments identical
-- **Version-agnostic**: gracefully avoids `mcp`/`migrate` on older openclaw (v2026.3.x), defers to `--help`
-
-## Xiaoyao ecosystem (9-skill suite)
-
-| # | Skill | Role |
-|---|-------|------|
-| 1 | xiaoyaoclaw-workspace-initializer | Home: directory standards |
-| 2 | xiaoyaoclaw-memory-distill | Content: memory distillation |
-| 3 | xiaoyaoclaw-task-progress-tracker | Status: task/project tracking |
-| 4 | xiaoyaoclaw-kb-retriever | Knowledge: local KB retrieval |
-| 5 | xiaoyaoclaw-workspace-auditor | Health: workspace audit |
-| 6 | xiaoyaoclaw-web-clipper | Input: web clipping |
-| 7 | xiaoyaoclaw-agent-orchestrator | Collaboration: multi-agent orchestration |
-| 8 | xiaoyaoclaw-usage-report | Metrics: usage reporting |
-| 9 | **xiaoyaoclaw-commander** | **Command: cross-tool command layer** |
 
 ## License
 
-MIT
+MIT — use it freely, attribution optional.
+
+---
+
+## 🛠️ Need customization?
+
+**Agent & Skills customization, from ¥800 (≈$110).**
+
+- WeChat: `dtsola` (note: **openclaw custom**)
+- Services: OpenClaw multi-agent deployment / workspace standardization / custom Skill development / agent memory system setup
+
+## 💬 Join the community
+
+Xiaoyao product family user group — feedback · exchange · suggestions:
+
+<p align="center">
+  <img src="./assets/readme/community-qr.png" width="280" alt="XiaoyaoAI user group QR: scan to join, or add WeChat dtsola (note: 加群)">
+</p>
+
+<p align="center">Scan to join, or add WeChat <code>dtsola</code> (note: <b>加群</b>)</p>
+
+## Sister projects
+
+- 🏠 **xiaoyaoclaw-workspace-initializer** (workspace initializer): gives every agent a "home" — standard directory structure + WORKSPACE.md rules + multi-agent config safety. <https://github.com/dtsola/xiaoyaoclaw-workspace-initializer>
+- 🧠 **xiaoyaoclaw-memory-distill** (memory distill): distill conversations into structured memory — semantic classification (core → MEMORY.md / daily → logs) + first-run building + incremental dedup + sensitive-info skip. <https://github.com/dtsola/xiaoyaoclaw-memory-distill>
+- 🗂️ **xiaoyaoclaw-task-progress-tracker** (task progress tracker): directory as container, PROGRESS.md as progress — lifecycle management for tasks/ and projects/ (status + progress log + document index). <https://github.com/dtsola/xiaoyaoclaw-task-progress-tracker>
+- 📚 **xiaoyaoclaw-kb-retriever** (knowledge base retriever): local KB retrieval — hierarchical data_structure.md index navigation + progressive retrieval over md/pdf/xlsx, zero dependencies, Windows & macOS ready. <https://github.com/dtsola/xiaoyaoclaw-kb-retriever>
+- 🩹 **xiaoyaoclaw-workspace-auditor** (workspace auditor): read-only health check — 5 categories, graded report with fix suggestions, zero-dependency, never modifies files. <https://github.com/dtsola/xiaoyaoclaw-workspace-auditor>
+- 📎 **xiaoyaoclaw-web-clipper** (web clipper): save any web page as clean local Markdown with frontmatter — dual-engine extraction (readability + trafilatura fallback), Chinese-safe filenames, batch clipping with dedup; output lands in knowledge/clippings/ ready for kb-retriever indexing. <https://github.com/dtsola/xiaoyaoclaw-web-clipper>
+- 🤝 **xiaoyaoclaw-agent-orchestrator** (agent orchestrator, **collaboration layer**): split, dispatch, track, aggregate, retry.<https://github.com/dtsola/xiaoyaoclaw-agent-orchestrator>
+- 📊 **xiaoyaoclaw-usage-report** (usage report): parse session JSONL to answer how long each task took, which tools/skills/models were used, and how many tokens were consumed — zero dependency, local only, token is the primary metric. <https://github.com/dtsola/xiaoyaoclaw-usage-report>
+- 🎛️ **xiaoyaoclaw-commander** (cross-tool commander, **command layer**): this skill — command your XiaoyaoClaw/OpenClaw multi-agent system from any Agent Skills tool. <https://github.com/dtsola/xiaoyaoclaw-commander>
+
+## 
