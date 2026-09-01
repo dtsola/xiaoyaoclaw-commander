@@ -1,15 +1,16 @@
-# XiaoyaoClaw Commander 🎛️
+# OpenClaw Cross-Tool Commander 🎛️
 
 > Drive your XiaoyaoClaw/OpenClaw gateway from any Agent Skills tool — Claude Code, Codex, OpenCode, Trae, DSH and more.
 
 <p align="center">
-  <img src="./assets/readme/hero.svg" width="100%" alt="XiaoyaoClaw Commander — cross-tool command layer: drive XiaoyaoClaw/OpenClaw gateway from any Agent Skills tool (Claude Code/Codex/OpenCode/Trae/DSH) via openclaw CLI">
+  <img src="./assets/readme/hero.svg" width="100%" alt="OpenClaw Cross-Tool Commander — drive XiaoyaoClaw/OpenClaw gateway from any Agent Skills tool (Claude Code/Codex/OpenCode/Trae/DSH) via openclaw CLI">
 </p>
 
 > Command your local XiaoyaoClaw / OpenClaw multi-agent system from any Agent Skills-compatible tool.
 > Cross-tool command layer — drive the OpenClaw gateway from Claude Code, Codex, OpenCode, Trae, DSH.
 
 ![license](https://img.shields.io/badge/license-MIT-green)
+[![ClawHub downloads](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fclawhub.ai%2Fapi%2Fv1%2Fskills%2Fxiaoyaoclaw-commander&query=skill.stats.downloads&label=ClawHub%20downloads&color=blue)](https://clawhub.ai/dtsola/skills/xiaoyaoclaw-commander)
 
 ## Why you need it
 
@@ -89,7 +90,7 @@ The tool will: detect openclaw → fill env vars → map "天桐" via `agents li
 
 ## How it compares
 
-| | Raw terminal | openclaw mcp serve | **xiaoyaoclaw-commander** |
+| | Raw terminal | openclaw mcp serve | **OpenClaw Cross-Tool Commander** |
 |---|---|---|---|
 | Binary location | manual, error-prone | needs new runtime | ✅ dynamic detection |
 | Env vars | manual | needs setup | ✅ auto-filled |
@@ -144,6 +145,6 @@ Xiaoyao product family user group — feedback · exchange · suggestions:
 - 📎 **xiaoyaoclaw-web-clipper** (web clipper): save any web page as clean local Markdown with frontmatter — dual-engine extraction (readability + trafilatura fallback), Chinese-safe filenames, batch clipping with dedup; output lands in knowledge/clippings/ ready for kb-retriever indexing. <https://github.com/dtsola/xiaoyaoclaw-web-clipper>
 - 🤝 **xiaoyaoclaw-agent-orchestrator** (agent orchestrator, **collaboration layer**): split, dispatch, track, aggregate, retry.<https://github.com/dtsola/xiaoyaoclaw-agent-orchestrator>
 - 📊 **xiaoyaoclaw-usage-report** (usage report): parse session JSONL to answer how long each task took, which tools/skills/models were used, and how many tokens were consumed — zero dependency, local only, token is the primary metric. <https://github.com/dtsola/xiaoyaoclaw-usage-report>
-- 🎛️ **xiaoyaoclaw-commander** (cross-tool commander, **command layer**): this skill — command your XiaoyaoClaw/OpenClaw multi-agent system from any Agent Skills tool. <https://github.com/dtsola/xiaoyaoclaw-commander>
+- 🎛️ **xiaoyaoclaw-commander** (OpenClaw Cross-Tool Commander, **command layer**): this skill — command your XiaoyaoClaw/OpenClaw multi-agent system from any Agent Skills tool. <https://github.com/dtsola/xiaoyaoclaw-commander>
 
 ## 

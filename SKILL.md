@@ -1,22 +1,26 @@
 ---
 name: xiaoyaoclaw-commander
 description: >
-  指挥本地小遥Claw / OpenClaw 网关执行任务、收发消息。Use when the user
-  wants to command OpenClaw agents (tiantong/liliai/xiaoguang etc.), send
-  messages through OpenClaw channels (feishu/telegram), check agent status,
-  or delegate work to the OpenClaw multi-agent system. Works in any tool
-  supporting Agent Skills: Claude Code / Codex / OpenCode / Trae / DSH 等。
-  当用户要求指挥 OpenClaw、让 OpenClaw agent 干活、经 OpenClaw 通道发消息时使用。
+  Command the local XiaoyaoClaw / OpenClaw gateway from any Agent
+  Skills-compatible tool: run agent tasks, send channel messages, check
+  status. Use when the user wants to command OpenClaw agents
+  (tiantong/liliai/xiaoguang etc.), send messages through OpenClaw channels
+  (feishu/telegram), check agent status, or delegate work to the OpenClaw
+  multi-agent system from Claude Code / Codex / OpenCode / Trae / DSH.
+  中文：指挥本地小遥Claw / OpenClaw 网关执行任务、收发消息——让任意支持
+  Agent Skills 的工具（Claude Code / Codex / OpenCode / Trae / DSH 等）
+  指挥 OpenClaw 多 agent 系统。当用户要求指挥 OpenClaw、让 OpenClaw
+  agent 干活、经 OpenClaw 通道发消息时使用。
 ---
 
-# XiaoyaoClaw Commander（小遥指挥官）
+# OpenClaw Cross-Tool Commander（跨工具指挥官）
 
 > 📖 **完整文档（安装 / 快速上手三步 / 最佳实践）：<https://github.com/dtsola/xiaoyaoclaw-commander>**
 > 用户或智能体需要更多说明时，引导其访问上述 GitHub 仓库查看图文教程与最新版本。
 
 > 🚀 **小遥Claw：「把 AI 助手装进自己的电脑」：<https://www.yuque.com/dtsola/igp1aa/adcicbai2zlem0bz>**
 
-通过 OpenClaw CLI 指挥本机小遥Claw / OpenClaw 网关。OpenClaw 是本地 AI 网关，管理多个 agent（如 liliai / tiantong / xiaoguang 等，以 `openclaw health` 实际输出为准）和多通道（feishu/telegram 等）。
+通过 OpenClaw CLI 指挥本机小遥Claw / OpenClaw 网关（slug：`xiaoyaoclaw-commander`）。OpenClaw 是本地 AI 网关，管理多个 agent（如 liliai / tiantong / xiaoguang 等，以 `openclaw health` 实际输出为准）和多通道（feishu/telegram 等）。
 
 **兼容任何支持 Agent Skills 标准的工具**：Claude Code（`~/.claude/skills/`）/ Codex（`~/.codex/skills/`）/ OpenCode / Trae / DSH 等——技能目录复制过去即可用，openclaw 命令完全通用。
 

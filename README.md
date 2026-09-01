@@ -1,17 +1,18 @@
-# XiaoyaoClaw Commander 🎛️
+# OpenClaw Cross-Tool Commander 🎛️
 
 <div align="center">
   <strong>🇨🇳 中文</strong> | <a href="README.en.md">🌐 English</a>
 </div>
 
 <p align="center">
-  <img src="./assets/readme/hero.svg" width="100%" alt="XiaoyaoClaw Commander — cross-tool command layer: drive XiaoyaoClaw/OpenClaw gateway from any Agent Skills tool (Claude Code/Codex/OpenCode/Trae/DSH) via openclaw CLI">
+  <img src="./assets/readme/hero.svg" width="100%" alt="OpenClaw Cross-Tool Commander — drive XiaoyaoClaw/OpenClaw gateway from any Agent Skills tool (Claude Code/Codex/OpenCode/Trae/DSH) via openclaw CLI">
 </p>
 
 > 让任意支持 Agent Skills 的工具指挥小遥Claw / OpenClaw 多 agent 系统。
 > Cross-tool command layer — drive your XiaoyaoClaw/OpenClaw gateway from Claude Code, Codex, OpenCode, Trae, DSH and any Agent Skills tool.
 
 ![license](https://img.shields.io/badge/license-MIT-green)
+[![ClawHub downloads](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fclawhub.ai%2Fapi%2Fv1%2Fskills%2Fxiaoyaoclaw-commander&query=skill.stats.downloads&label=ClawHub%20downloads&color=blue)](https://clawhub.ai/dtsola/skills/xiaoyaoclaw-commander)
 
 ## 为什么需要它
 
@@ -91,7 +92,7 @@ git clone https://github.com/dtsola/xiaoyaoclaw-commander
 
 ## 与其他方案的区别
 
-| | 终端手动敲 | openclaw mcp serve | **xiaoyaoclaw-commander** |
+| | 终端手动敲 | openclaw mcp serve | **OpenClaw Cross-Tool Commander** |
 |---|---|---|---|
 | 二进制定位 | 手动找，易踩坑 | 需新版 runtime | ✅ 动态探测，不写死 |
 | 环境变量 | 手动设置 | 需配置 | ✅ 自动补齐 |
@@ -146,6 +147,6 @@ MIT — 随便用，署名可选。
 - 📎 **xiaoyaoclaw-web-clipper**（网页剪藏）：把任意网页保存为带 frontmatter 的本地 Markdown——双引擎正文提取（readability + trafilatura 降级链）、中文文件名安全、批量剪藏 + 去重；输出直通 knowledge/clippings/，配合 kb-retriever 建索引即可检索。<https://github.com/dtsola/xiaoyaoclaw-web-clipper>
 - 🤝 **xiaoyaoclaw-agent-orchestrator**（Agent 协作编排，**协作层**）：拆任务、分 agent、管进度、聚结果、失败重试。<https://github.com/dtsola/xiaoyaoclaw-agent-orchestrator>
 - 📊 **xiaoyaoclaw-usage-report**（用量报告）：解析 session JSONL，回答「每次 agent 任务花了多久、用了哪些工具/技能/模型、消耗了多少 token」——零依赖纯本地，token 为主指标。<https://github.com/dtsola/xiaoyaoclaw-usage-report>
-- 🎛️ **xiaoyaoclaw-commander**（跨工具指挥官，**指挥层**）：本技能——让任意支持 Agent Skills 的工具指挥小遥Claw / OpenClaw 多 agent 系统。<https://github.com/dtsola/xiaoyaoclaw-commander>
+- 🎛️ **xiaoyaoclaw-commander**（OpenClaw Cross-Tool Commander，**指挥层**）：本技能——让任意支持 Agent Skills 的工具指挥小遥Claw / OpenClaw 多 agent 系统。<https://github.com/dtsola/xiaoyaoclaw-commander>
 
 ## 

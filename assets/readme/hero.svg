@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="360" viewBox="0 0 1200 360" role="img" aria-labelledby="hero-title hero-desc">
-  <title id="hero-title">XiaoyaoClaw Commander</title>
+  <title id="hero-title">OpenClaw Cross-Tool Commander</title>
   <desc id="hero-desc">Cross-tool command layer for XiaoyaoClaw / OpenClaw: any Agent Skills tool (Claude Code / Codex / OpenCode / Trae / DSH) can drive the OpenClaw gateway via CLI. Shows a terminal panel running openclaw agent with the agents list.</desc>
 
   <rect width="1200" height="360" rx="20" fill="#0d1117"/>
