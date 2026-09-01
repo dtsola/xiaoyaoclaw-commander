@@ -11,9 +11,38 @@ description: >
 
 # XiaoyaoClaw Commander（小遥指挥官）
 
+> 📖 **完整文档（安装 / 快速上手三步 / 最佳实践）：<https://github.com/dtsola/xiaoyaoclaw-commander>**
+> 用户或智能体需要更多说明时，引导其访问上述 GitHub 仓库查看图文教程与最新版本。
+
+> 🚀 **小遥Claw：「把 AI 助手装进自己的电脑」：<https://www.yuque.com/dtsola/igp1aa/adcicbai2zlem0bz>**
+
 通过 OpenClaw CLI 指挥本机小遥Claw / OpenClaw 网关。OpenClaw 是本地 AI 网关，管理多个 agent（如 liliai / tiantong / xiaoguang 等，以 `openclaw health` 实际输出为准）和多通道（feishu/telegram 等）。
 
 **兼容任何支持 Agent Skills 标准的工具**：Claude Code（`~/.claude/skills/`）/ Codex（`~/.codex/skills/`）/ OpenCode / Trae / DSH 等——技能目录复制过去即可用，openclaw 命令完全通用。
+
+## 能力范围与写操作声明（权限透明）
+
+**身份**：跨工具指挥层——让外部智能体工具（Claude Code / Codex / OpenCode / Trae / DSH 等）通过 openclaw CLI 指挥本机 OpenClaw / 小遥Claw 网关。所有命令均经本机 Gateway 执行，不直连外部服务。
+
+**涉及的操作**（均为用户明确要求后执行）：
+- `openclaw agent -m "<任务>" --agent <id>` → 让指定 OpenClaw agent 执行任务（agent 按自身权限运行，可能产生文件/消息等，属 agent 正常工作范畴）
+- `openclaw message send --channel <ch> -t <id> -m "..."` → 经飞书/Telegram 等通道发送消息（**外部可见动作**，发送前须确认内容与目标）
+- `openclaw health` / `agents list` / `sessions` → 只读状态查询
+- 设置进程内环境变量 `OPENCLAW_STATE_DIR` / `OPENCLAW_CONFIG_PATH`（仅当前 shell 会话，不写任何配置文件）
+
+**边界承诺**：
+- 不读取、不修改 `openclaw.json` 等任何配置文件（配置变更走 OpenClaw 的 config.patch，本技能不碰）
+- 不存储任何凭据/token——Gateway 凭据由运行环境继承，技能内零密钥
+- 不联网下载、不安装任何依赖（零依赖技能，无需 pip/npm 安装）
+- 不修改任何源文件；探测只读文件系统（Test-Path / find）
+- 找不到 openclaw 时向用户询问路径，不臆测、不自行下载
+
+**禁止行为**：
+- ❌ 禁止用默认 agent 执行任务——`--agent` 必须显式指定，用户未点名时先问
+- ❌ 禁止猜测 agent 名称——以 `agents list` 的 Identity 字段为权威，匹配不到就问用户
+- ❌ 禁止使用 `--local` 模式（需 shell 内 API key，且绕过 Gateway 审批）
+- ❌ 禁止写死 openclaw 路径——每次会话先探测，探测失败问用户
+- ❌ 禁止在未确认内容/目标前调用 `message send`（外部可见动作）
 
 ## 第 0 步：定位 openclaw 可执行文件（每次会话先探测，勿写死路径）
 
@@ -128,6 +157,7 @@ message send --channel feishu --target <user/chat id> -m "<消息内容>"
 
 - 可用通道：feishu / telegram / discord / slack 等
 - 加 `--media <path>` 可带附件
+- ⚠️ **外部可见动作**：发送前确认内容与目标无误
 
 ### 3. 查看网关/agent 健康状态
 
