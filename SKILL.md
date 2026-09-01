@@ -1,16 +1,12 @@
 ---
 name: xiaoyaoclaw-commander
 description: >
-  Command XiaoyaoClaw / OpenClaw from any Agent Skills tool: Claude Code,
-  Codex, OpenCode, Trae, DSH and more. Let external agents run OpenClaw
-  agents (tiantong/liliai/xiaoguang etc.), send channel messages
-  (feishu/telegram), or check status. Use when the user wants to command
-  OpenClaw agents, send messages through OpenClaw channels, or delegate
-  work to the OpenClaw multi-agent system.
-  中文：让任意支持 Agent Skills 的工具（Claude Code / Codex / OpenCode /
-  Trae / DSH 等）指挥小遥Claw 和 OpenClaw 干活——执行 agent 任务、收发
-  通道消息、查询状态。当用户要求指挥 OpenClaw、让 OpenClaw agent 干活、
-  经 OpenClaw 通道发消息时使用。
+  Drive OpenClaw with Claude Code, Codex, OpenCode, Trae, DSH etc. —
+  command the gateway, its agents and channels, from any Agent Skills
+  tool. Use when you want other AI tools to make OpenClaw work.
+  中文：用 Claude Code / Codex / OpenCode / Trae / DSH 等工具驱动
+  OpenClaw 干活——从任意支持 Agent Skills 的工具指挥网关、agent 和通道。
+  当你想用其他 AI 工具驱动 OpenClaw 时使用。
 ---
 
 # OpenClaw Cross-Tool Commander（跨工具指挥官）
