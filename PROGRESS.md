@@ -1,7 +1,7 @@
 ---
 type: project
 status: active
-progress: 60
+progress: 80
 created: 2026-09-01
 updated: 2026-09-01
 docs:
@@ -32,7 +32,7 @@ docs:
 
 ## 当前状态
 
-开发 + GitHub 发布完成（60%）：DESIGN.md、hero.svg（三重校验）、LICENSE、README 双语齐备；GitHub `dtsola/xiaoyaoclaw-commander` 已公开（public/main/MIT/5 topics/中英 description）。待办：ClawHub 提交（走确认制）、八件套 README 互链、community-qr.png。
+开发 + GitHub 发布 + 九件套互链完成（80%）：DESIGN.md、hero.svg（三重校验）、LICENSE、README 双语齐备；GitHub `dtsola/xiaoyaoclaw-commander` 已公开（public/main/MIT/5 topics/中英 description）；SKILL.md 已对齐 kb-retriever 安全格式（权限透明 + 边界承诺 + 禁止行为，敏感扫描 CLEAN）；**九件套 README 互链闭环**（8 仓库 16 个 README 全部加 commander 条目 + 套数标注统一为九件套/生态）。待办：ClawHub 提交（等指挥官指令）。
 
 ## 进度日志
 
@@ -40,6 +40,9 @@ docs:
 - 2026-09-01 14:45：**多工具标识定案 + SKILL.md 更新**——指挥官纠正「不需要泛化，只需要标识」：技能正文命令通用，仅 frontmatter 标识兼容工具（Claude Code/Codex/OpenCode/Trae/DSH）；技能名统一 openclaw-commander → xiaoyaoclaw-commander；README.md / README.en.md 双语完成（含各工具技能目录安装表）
 - 2026-09-01 14:47-14:49：**DESIGN + hero + LICENSE + GitHub 发布**——docs/DESIGN.md（定位/核心问题/兼容标识表/工作流 Step 0-3/红线/发布计划）；hero.svg 暗色终端风（Chrome headless + PIL 像素扫描 + AI 视觉三重校验通过）；MIT LICENSE；git init main → 建仓 dtsola/xiaoyaoclaw-commander → push（http 代理 22307 通）→ About 中英 description + 5 topics（openclaw/agent-skills/claude-code/multi-agent/cli）；坑：PowerShell 内联脚本传中文 JSON 被 GBK 破坏 → 改 Python 脚本文件执行修复
 - 2026-09-01 14:53-14:54：**全局技能回滚**——指挥官定案：本技能非 OpenClaw 全局技能（给外部工具用），删除误同步的 state/skills/xiaoyaoclaw-commander/
+- 2026-09-01 14:55-14:58：**README 对齐 + 通用化**——README 对齐 memory-distill 结构（hero/徽章/为什么需要它/特性/安装/快速上手/对比表/目录结构/定制广告/交流群/姊妹项目）；「为什么需要它」通用化（面向所有想用外部智能体操作 OpenClaw/小遥Claw 的用户）；community-qr.png 补齐
+- 2026-09-01 15:00-15:03：**SKILL.md 安全格式对齐**——按 kb-retriever 格式新增「能力范围与写操作声明（权限透明）」（身份/涉及操作/边界承诺）+「禁止行为」5 条红线 + GitHub/小遥Claw 引用块；frontmatter YAML 校验通过 + 全项目敏感信息扫描 CLEAN
+- 2026-09-01 15:04-15:08：**九件套 README 互链闭环**——8 仓库 16 个 README（中英）全部追加 commander 姊妹项目条目；「七件套/八件套/on top of the seven」标注统一为九件套/生态；全部 push 成功
 
 ## 文档索引
 
