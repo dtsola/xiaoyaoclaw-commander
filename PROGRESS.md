@@ -68,3 +68,21 @@ docs:
 - 重要文档：移入 docs/ 或记录路径，追加到 docs 数组（机器可读）+ 本表格（人可读）
 - 项目完结：status 改 archived + 关键结论记入 MEMORY.md（供 memory-distill 蒸馏）
 -->
+
+
+## 2026-09-17 11:4x ClawHub 安全检查 17 条修复 → v1.0.2
+
+**核查**：clawhub skill verify xiaoyaoclaw-commander → fail / suspicious（conf high）；aig **T09 命令注入** + **T07 盲搜可执行文件**（warning/Medium）+ skillspector 15 条（P2 hero 注释 / SQP-1 ×4 / SQP-2 ×2 / RA2 ×1 / AS3 ×4 / E1 ×1 / SQP-3 ×2）
+
+**修复（提交待补）**
+- **T09 命令注入（真问题）**：新增「安全执行约定」——参数分开传 + 变量双引号 + --flag=值；PowerShell 用参数数组；**禁** eval/sh -c/iex/字符串拼接/把用户文本当选项或放进结构性位置；执行前回显 argv 自检。**实测**参数数组写法跑通
+- **T07 可执行文件来源（真问题）**：**删掉 macOS 段在用户可写目录里的 find 兜底** → 找不到就问用户；补执行前校验（已知安装目录/PATH、非 g+w/o+w、用户给的路径先回显确认）
+- **SQP-1 ×4**：新增「激活边界」（点名目标才激活；普通对话/问文档/宿主本身是 OpenClaw/宽泛说法不激活）+ README 中英「不该触发」说明
+- **SQP-2 ×2**：README 中英顶部加 ⚠️「会真的产生外部效果」+ **读写分级表**（🟢只读 / 🟠派任务先确认 / 🔴发消息必须先确认目标与内容）
+- **RA2**：明确无持久化（env 只作用当前 shell，不改配置文件）
+- **AS3 ×4 + E1**：SKILL.md 改为「只复制本技能自己目录」+ 显式声明不枚举其他技能；docs 经 .clawhubignore 排除（包 11 → **6 个文件**）
+- **P2 / SQP-3**：hero.svg 清空 6 处注释 + 副标题改双语；SKILL.md/README 补语言可选
+
+**验证**：SKILL.md 六项要点全到位（257 行）· README 中英三项到位 · 推荐命令写法实测跑通 · hero 渲染 26KB + 视觉复核无裁切 · 发布包预览 6 文件
+
+**待批**：发 v1.0.2 → 复扫

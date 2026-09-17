@@ -1,0 +1,1993 @@
+{
+  "schema": "clawhub.skill.verify.v1",
+  "ok": false,
+  "decision": "fail",
+  "reasons": [
+    "security.status_not_clean"
+  ],
+  "slug": "xiaoyaoclaw-commander",
+  "displayName": "OpenClaw Cross-Tool Commander",
+  "pageUrl": "https://clawhub.ai/dtsola/skills/xiaoyaoclaw-commander",
+  "publisherHandle": "dtsola",
+  "publisherDisplayName": "dtsola",
+  "publisherProfileUrl": "https://clawhub.ai/dtsola",
+  "version": "1.0.1",
+  "resolvedFrom": "latest",
+  "tag": null,
+  "createdAt": 1788248020552,
+  "card": {
+    "available": true,
+    "path": "skill-card.md",
+    "url": "https://wry-manatee-359.convex.site/api/v1/skills/xiaoyaoclaw-commander/card?ownerHandle=dtsola&version=1.0.1",
+    "sha256": "deea64faa35e9e88099bbe5d7b8defec3d03c0da125b4003f5436ed19e7df9b5",
+    "size": 2441,
+    "contentType": "text/markdown; charset=utf-8"
+  },
+  "artifact": {
+    "sourceFingerprint": "8bd0b17fb648ae8c044f90d7e08a396359d78a87111a98143576e72fefba3001",
+    "bundleFingerprints": [
+      "416024c6d45222add106d0b2a87245576f05e752eebfe6a115b1d0b7cfabe77b",
+      "7f4112bd0d23e2a786a5415db1870f996ca61baaebbd504ecc988834bac9cbc1"
+    ],
+    "files": [
+      {
+        "path": "assets/readme/community-qr.png",
+        "size": 97430,
+        "sha256": "59634d15133631f52c418403bda5a1117dd8c9f808e841bd6992673ef6744a6b",
+        "contentType": "image/png"
+      },
+      {
+        "path": "assets/readme/hero.svg",
+        "size": 3725,
+        "sha256": "358ecc8b594b38fce9f626d7f1bb15006afe918f351eec47bebaac6cfeee284b",
+        "contentType": "image/svg+xml"
+      },
+      {
+        "path": "docs/DESIGN.md",
+        "size": 8920,
+        "sha256": "c1cd23082eaf818f4328ae954af7aaae2947869ca351dc74ccb7b44d86623733",
+        "contentType": "text/markdown"
+      },
+      {
+        "path": "docs/research-00-problem-decomposition.md",
+        "size": 2144,
+        "sha256": "e245f667743a6a6b837f28c9baa6c26bea492b154bba1ffcd749c0549bbf7a92",
+        "contentType": "text/markdown"
+      },
+      {
+        "path": "docs/research-report-claude-code-openclaw.md",
+        "size": 12246,
+        "sha256": "85cf72f622ba55869d4d9a1e7b5aeee64ffd07bdbb6ee15aa0bc833eb76d2a35",
+        "contentType": "text/markdown"
+      },
+      {
+        "path": "LICENSE",
+        "size": 1063,
+        "sha256": "40ae557ab28d175b3920683fcf9803f6d82117e857cc501080947b4ae097bb4b",
+        "contentType": "application/octet-stream"
+      },
+      {
+        "path": "PROGRESS.md",
+        "size": 6460,
+        "sha256": "66af739a94727d7a5e5a8f834f2447abd3dabcb35473db130c28e4c254a39f4a",
+        "contentType": "text/markdown"
+      },
+      {
+        "path": "README.en.md",
+        "size": 9090,
+        "sha256": "9fb704ba51082f20a34a868ff64ae74afdacb79dc26a27a1fca911ede62e219d",
+        "contentType": "text/markdown"
+      },
+      {
+        "path": "README.md",
+        "size": 9055,
+        "sha256": "5dfd29c6d20ec9faff5e7a0ccc0a9d3c8ecac631f023053f62e57da5cc732eba",
+        "contentType": "text/markdown"
+      },
+      {
+        "path": "SKILL.md",
+        "size": 10248,
+        "sha256": "7d9471cd88b367b10cea80bc23c256dc69afab29d4e9f9ac0ab9ce8734bfe6b6",
+        "contentType": "text/markdown"
+      }
+    ]
+  },
+  "provenance": {
+    "source": "unavailable",
+    "reason": "No server-resolved GitHub import provenance is stored for this version."
+  },
+  "security": {
+    "status": "suspicious",
+    "passed": false,
+    "rawStatus": "suspicious",
+    "verdict": "suspicious",
+    "confidence": "high",
+    "summary": "The skill appears to be a legitimate OpenClaw command helper, but it can drive local agents and send external messages, and its executable and command handling need review before use.",
+    "model": null,
+    "checkedAt": 1789557546522,
+    "scannerReports": {
+      "aig": {
+        "version": "2.1.0",
+        "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/main/Schemata/sarif-schema-2.1.0.json",
+        "runs": [
+          {
+            "tool": {
+              "driver": {
+                "name": "aig-skill-scan",
+                "version": "0.2.1",
+                "informationUri": "https://github.com/Tencent/AI-Infra-Guard",
+                "rules": [
+                  {
+                    "id": "T01",
+                    "name": "Skill Instruction Hijacking",
+                    "shortDescription": {
+                      "text": "Alters the agent's current session goals or safety constraints when the skill is loaded"
+                    }
+                  },
+                  {
+                    "id": "T02",
+                    "name": "Agent Memory Poisoning",
+                    "shortDescription": {
+                      "text": "Writes attacker-controlled rules into persistent memory so they continue to affect future sessions"
+                    }
+                  },
+                  {
+                    "id": "T03",
+                    "name": "Remote Payload Retrieval and Execution",
+                    "shortDescription": {
+                      "text": "Fetches code from an external URL, allowing the effective payload to change after skill review"
+                    }
+                  },
+                  {
+                    "id": "T04",
+                    "name": "Embedded Malicious Code",
+                    "shortDescription": {
+                      "text": "Ships malicious scripts inside the skill package and executes them locally when invoked"
+                    }
+                  },
+                  {
+                    "id": "T05",
+                    "name": "Unauthorized Access and Privilege Escalation",
+                    "shortDescription": {
+                      "text": "Breaks least-privilege boundaries by obtaining permissions beyond the task's legitimate needs"
+                    }
+                  },
+                  {
+                    "id": "T06",
+                    "name": "System Persistence",
+                    "shortDescription": {
+                      "text": "Installs cross-session backdoors, hooks, services, or scheduled tasks that survive the skill run"
+                    }
+                  },
+                  {
+                    "id": "T07",
+                    "name": "Tool Hijacking and Spoofing",
+                    "shortDescription": {
+                      "text": "Modifies, wraps, spoofs, or replaces tools so legitimate-looking calls execute attacker logic"
+                    }
+                  },
+                  {
+                    "id": "T08",
+                    "name": "Insecure Dependencies",
+                    "shortDescription": {
+                      "text": "Introduces malicious packages or components through dependency confusion, typosquatting, or unsafe sources"
+                    }
+                  },
+                  {
+                    "id": "T09",
+                    "name": "Insecure Skill Coding Practices",
+                    "shortDescription": {
+                      "text": "Exposes exploitable flaws such as hardcoded secrets, command injection, plaintext sensitive data, or unsafe temp files"
+                    }
+                  },
+                  {
+                    "id": "other",
+                    "name": "Other Risk",
+                    "shortDescription": {
+                      "text": "Security issues not covered by the T01-T09 classification"
+                    }
+                  }
+                ]
+              }
+            },
+            "results": [
+              {
+                "ruleId": "T09",
+                "level": "warning",
+                "message": {
+                  "text": "Shell Command Injection Through Unescaped User-Controlled Arguments"
+                },
+                "locations": [
+                  {
+                    "physicalLocation": {
+                      "artifactLocation": {
+                        "uri": "SKILL.md"
+                      },
+                      "region": {
+                        "startLine": 138,
+                        "endLine": 155
+                      }
+                    }
+                  }
+                ],
+                "partialFingerprints": {
+                  "primaryLocationLineHash": "d5c70095816eadcc"
+                },
+                "properties": {
+                  "description": "<![CDATA[\n## Vulnerability Details\n\n**File Location**: `SKILL.md:138` and `SKILL.md:155`  \n**Vulnerability Type**: Command injection through unsafe shell command construction  \n**Risk Level**: Medium\n\n### Vulnerable Code\n\n```bash\nagent -m \"<任务描述>\" --agent <agent-id> --json\n```\n\n```bash\nmessage send --channel feishu --target <user/chat id> -m \"<消息内容>\"\n```\n\n### Technical Analysis\n\nThe Skill instructs the hosting AI agent to insert task descriptions, message content, agent identifiers, and message targets directly into shell command templates. It does not specify safe argument-array execution, input validation, or platform-specific escaping.\n\nThe quoted placeholders do not provide sufficient protection. If a value contains a closing quote followed by shell syntax, the value can terminate the intended argument and introduce an additional command. The exact syntax varies between POSIX shells and PowerShell, but both environments are supported by the Skill.\n\nFor example, malicious task text containing a quote, a command separator, and another command could cause the shell to interpret the appended text as a separate command rather than as part of the OpenClaw message. Exploitation depends on the host agent constructing and executing the documented command as a shell string.\n\nAgent IDs, channel names, and targets are also inserted without validation. These values should be treated as untrusted even when they normally come from `agents list` or user input.\n\n### Attack Path\n\n1. An attacker supplies task or message text containing shell metacharacters and a closing quote.\n2. The hosting agent substitutes that text directly into one of the documented command templates.\n3. The hosting agent invokes the resulting command through Bash, Zsh, PowerShell, or another shell.\n4. The injected quote terminates the intended `-m` argument.\n5. The shell interprets the remaining content as shell syntax or an additional command.\n6. The injected command executes with the same operating-system privileges and environment access as the hosting agent.\n\nA similar path is possible if an attacker can influence an agent ID, message target, or channel value and the host inserts that value without validation.\n\n### Impact Assessment\n\nSuccessful exploitation could execute arbitrary local commands with the privileges of the hosting AI-agent process. Depending on those privileges, an attacker could:\n\n- Read files available to the current user.\n- Access environment variables and inherited gateway credentials.\n- Modify or delete user-owned files.\n- Send unauthorized external messages.\n- Invoke additional local tools or network clients.\n- Alter OpenClaw state available to the current account.\n\nThe issue does not itself provide administrative privileges, but the effective scope is everything accessible to the account running the host agent.\n]]>",
+                  "severity": "Medium"
+                },
+                "fixes": [
+                  {
+                    "description": {
+                      "text": "<![CDATA[\n## Remediation Suggestions\n\n1. Require the host to use a process API that accepts an executable and a separate argument array instead of constructing a shell command string.\n2. Pass task descriptions and message bodies as single opaque arguments without shell evaluation.\n3. If shell invocation cannot be avoided, document and enforce separate escaping routines for POSIX shells and PowerShell.\n4. Validate `agent-id`, channel, and target values against restrictive formats or authoritative values returned by OpenClaw.\n5. Reject control characters, unexpected line breaks, and shell metacharacters in identifier fields.\n6. Consider writing long message bodies to a securely created temporary file and using a supported file-input option, if OpenClaw provides one.\n7. Add explicit guidance that raw user text must never be interpolated into a command evaluated with `eval`, `bash -c`, `sh -c`, `cmd /c`, or PowerShell expression evaluation.\n8. Add tests covering quotes, command substitutions, separators, newlines, and platform-specific metacharacters.\n]]>"
+                    }
+                  }
+                ]
+              },
+              {
+                "ruleId": "T07",
+                "level": "warning",
+                "message": {
+                  "text": "Unverified OpenClaw Executable Selection From User-Writable Directories"
+                },
+                "locations": [
+                  {
+                    "physicalLocation": {
+                      "artifactLocation": {
+                        "uri": "SKILL.md"
+                      },
+                      "region": {
+                        "startLine": 120,
+                        "endLine": 123
+                      }
+                    }
+                  }
+                ],
+                "partialFingerprints": {
+                  "primaryLocationLineHash": "27dbbf76e1833bd6"
+                },
+                "properties": {
+                  "description": "<![CDATA[\n## Vulnerability Details\n\n**File Location**: `SKILL.md:120-123`  \n**Vulnerability Type**: Local executable spoofing and tool hijacking  \n**Risk Level**: Medium\n\n### Vulnerable Code\n\n```bash\n# 4) 兜底：常见目录内搜索（慢，最后用）\nif [ -z \"$OC\" ]; then\n  OC=\"$(find \"$HOME/Library/Application Support\" \"$HOME/.openclaw\" \"$HOME/.local/bin\" -path \"*/runtime/openclaw/bin/openclaw\" -o -name openclaw -type f 2>/dev/null | head -1)\"\nfi\nif [ -z \"$OC\" ]; then echo \"openclaw 未找到\" >&2; exit 1; fi\n```\n\n### Technical Analysis\n\nThe fallback recursively searches broad, user-writable directory trees and accepts the first object matching the expected path pattern or filename. It does not verify:\n\n- The canonical path of the selected executable.\n- File ownership or permissions.\n- Whether the selected path belongs to a trusted installation.\n- A code signature, package signature, or cryptographic hash.\n- The executable's identity or expected version.\n- User approval for the dynamically selected path.\n\nThe result is selected with `head -1`, making the chosen executable dependent on filesystem traversal order. An attacker who can write within one of the searched directories may place a spoofed file named `openclaw` where it is discovered before the legitimate executable.\n\nThere is also an expression-grouping weakness in the `find` command. Without parentheses, `-type f` applies only to the `-name openclaw` branch, not necessarily to the `-path \"*/runtime/openclaw/bin/openclaw\"` branch. The fallback therefore does not consistently enforce the expected file type.\n\nAfter discovery, the Skill recommends using `\"$OC\"` as the command prefix. Consequently, a spoofed executable would be invoked as though it were the legitimate OpenClaw CLI.\n\n### Attack Path\n\n1. An attacker obtains write access to a searched user directory, such as a subdirectory under `~/.openclaw`, `~/.local/bin`, or `~/Library/Application Support`.\n2. The attacker creates a malicious executable named `openclaw`, or places it at a path matching `*/runtime/openclaw/bin/openclaw`.\n3. The legitimate executable is unavailable from the earlier exact-path and `PATH` checks.\n4. The recursive fallback runs and returns the attacker's file as its first match.\n5. The Skill assigns that path to `OC` without identity or integrity verification.\n6. A subsequent health, agent, session, or messaging operation invokes `\"$OC\"`.\n7. The malicious executable runs with the privileges and environment of the hosting agent.\n\n### Impact Assessment\n\nA successfully spoofed executable can perform arbitrary actions available to the current operating-system account. This may include:\n\n- Reading user-accessible files and configuration.\n- Capturing command arguments, task descriptions, message content, and target identifiers.\n- Reading inherited environment variables and gateway-related settings.\n- Modifying user-owned OpenClaw state or other files.\n- Sending network requests or external messages.\n- Returning forged output to mislead the hosting agent.\n\nThis issue does not inherently cross an operating-system privilege boundary, but it compromises the trust boundary between the Skill and the local OpenClaw tool.\n]]>",
+                  "severity": "Medium"
+                },
+                "fixes": [
+                  {
+                    "description": {
+                      "text": "<![CDATA[\n## Remediation Suggestions\n\n1. Remove the broad recursive fallback and restrict discovery to documented, exact installation paths.\n2. If no trusted exact path is found, ask the user to provide and confirm the executable path instead of selecting the first recursive match.\n3. Canonicalize the selected path and verify that it remains within an approved installation directory.\n4. Require a regular executable file and correct the `find` expression with explicit grouping if recursive discovery is retained.\n5. Verify file ownership and reject executables writable by unexpected users or groups.\n6. Where available, validate the platform code signature, package signature, or a trusted cryptographic hash.\n7. Run a non-destructive identity check, such as a version query, and verify that the output matches an expected OpenClaw format before issuing privileged operations.\n8. Display the resolved executable path and require user approval when the path was not found through an exact trusted candidate.\n9. Avoid relying on unspecified traversal order or `head -1` for security-sensitive executable selection.\n]]>"
+                    }
+                  }
+                ]
+              }
+            ],
+            "properties": {
+              "securityScore": 50,
+              "primaryLanguage": "Markdown",
+              "llm": "gpt-5.6",
+              "startTime": 1789557364.435654,
+              "endTime": 1789557483.749263
+            }
+          }
+        ]
+      },
+      "skillspector": {
+        "skill": {
+          "name": "xiaoyaoclaw-commander",
+          "source": "/tmp/clawhub-codex-scan-v57ebds8wbw9pm2wwj2vq5gr2x8egb88-D8ZXaZ/clawscan-skillspector-4138732387/artifact",
+          "scanned_at": "2026-09-16T11:15:37.406728+00:00"
+        },
+        "risk_assessment": {
+          "score": 84,
+          "severity": "CRITICAL",
+          "recommendation": "DO_NOT_INSTALL",
+          "max_issue_severity": "HIGH"
+        },
+        "components": [
+          {
+            "path": "LICENSE",
+            "type": "other",
+            "lines": 21,
+            "executable": false,
+            "size_bytes": 1063,
+            "source_url": null,
+            "source_identity": null,
+            "source_digest": null
+          },
+          {
+            "path": "PROGRESS.md",
+            "type": "markdown",
+            "lines": 67,
+            "executable": false,
+            "size_bytes": 6460,
+            "source_url": null,
+            "source_identity": null,
+            "source_digest": null
+          },
+          {
+            "path": "README.en.md",
+            "type": "markdown",
+            "lines": 150,
+            "executable": false,
+            "size_bytes": 9090,
+            "source_url": null,
+            "source_identity": null,
+            "source_digest": null
+          },
+          {
+            "path": "README.md",
+            "type": "markdown",
+            "lines": 152,
+            "executable": false,
+            "size_bytes": 9055,
+            "source_url": null,
+            "source_identity": null,
+            "source_digest": null
+          },
+          {
+            "path": "SKILL.md",
+            "type": "markdown",
+            "lines": 194,
+            "executable": false,
+            "size_bytes": 10248,
+            "source_url": null,
+            "source_identity": null,
+            "source_digest": null
+          },
+          {
+            "path": "assets/readme/community-qr.png",
+            "type": "other",
+            "lines": 2367,
+            "executable": false,
+            "size_bytes": 97430,
+            "source_url": null,
+            "source_identity": null,
+            "source_digest": null
+          },
+          {
+            "path": "assets/readme/hero.svg",
+            "type": "other",
+            "lines": 48,
+            "executable": false,
+            "size_bytes": 3725,
+            "source_url": null,
+            "source_identity": null,
+            "source_digest": null
+          },
+          {
+            "path": "docs/DESIGN.md",
+            "type": "markdown",
+            "lines": 176,
+            "executable": false,
+            "size_bytes": 8920,
+            "source_url": null,
+            "source_identity": null,
+            "source_digest": null
+          },
+          {
+            "path": "docs/research-00-problem-decomposition.md",
+            "type": "markdown",
+            "lines": 39,
+            "executable": false,
+            "size_bytes": 2144,
+            "source_url": null,
+            "source_identity": null,
+            "source_digest": null
+          },
+          {
+            "path": "docs/research-report-claude-code-openclaw.md",
+            "type": "markdown",
+            "lines": 215,
+            "executable": false,
+            "size_bytes": 12246,
+            "source_url": null,
+            "source_identity": null,
+            "source_digest": null
+          }
+        ],
+        "structured_summaries": [],
+        "issues": [
+          {
+            "id": "P2",
+            "finding_id": "finding-aa435aff87034a92b537b67bb4907eb7",
+            "category": "Prompt Injection",
+            "pattern": "Hidden Instructions",
+            "severity": "HIGH",
+            "confidence": 0.7,
+            "location": {
+              "file": "assets/readme/hero.svg",
+              "start_line": 7,
+              "end_line": null
+            },
+            "finding": "<!-- left: title block -->\n  <g id=\"title-block\" transform=\"translate(56 40)\">\n    <text x=\"0\" y=\"44\" font-family=\"ui-monospace, SFMono-Regular, Menlo, monospace\" font-size=\"20\" letter-spacing=\"4\" fil",
+            "explanation": "Hidden instructions were detected in comments or invisible text. These could contain malicious directives. Manual review is recommended.",
+            "remediation": "Audit all comments and invisible characters. Remove any instructions that direct the agent to perform unauthorized actions. Use plain, reviewable content.",
+            "code_snippet": "\n  <rect width=\"1200\" height=\"360\" rx=\"20\" fill=\"#0d1117\"/>\n\n  <!-- left: title block -->\n  <g id=\"title-block\" transform=\"translate(56 40)\">\n    <text x=\"0\" y=\"44\" font-family=\"ui-monospace, SFMono-Regular, Menlo, monospace\" font-size=\"20\" letter-spacing=\"4\" fill=\"#8b949e\">OPENCLAW · AGENT SKILL</text>\n",
+            "intent": null,
+            "tags": [
+              "Prompt Injection",
+              "llm-unconfirmed"
+            ],
+            "evidence": {},
+            "match_fingerprint": "0570cae6589cf5e87473dce2bd3b5ffa8f0bb7f88390f9550a665b0ba430bbee",
+            "occurrences": [
+              {
+                "file": "assets/readme/hero.svg",
+                "start_line": 7,
+                "end_line": null
+              }
+            ]
+          },
+          {
+            "id": "RA2",
+            "finding_id": "finding-9a7ae5a2ee0442ec90a53b3e29eec78f",
+            "category": "Rogue Agent",
+            "pattern": "Session Persistence",
+            "severity": "MEDIUM",
+            "confidence": 0.6,
+            "location": {
+              "file": "README.en.md",
+              "start_line": 17,
+              "end_line": null
+            },
+            "finding": "write code and run tasks — while your OpenClaw / XiaoyaoClaw hosts a fleet of agents (tiantong, xiaoguang, xiaozhi...) and multiple channels (Feishu, Telegram...). **When you want an external agent to",
+            "explanation": "Skill establishes unauthorized persistence across sessions via cron jobs, startup scripts, or state files. Session persistence allows an attacker to maintain access beyond the current interaction.",
+            "remediation": "Remove any persistence mechanisms (cron jobs, startup scripts, state files). Skills should not maintain state across sessions without explicit user consent.",
+            "code_snippet": "\n## Why you need it\n\nClaude Code, Codex, OpenCode, Trae, DSH and other agent tools help you write code and run tasks — while your OpenClaw / XiaoyaoClaw hosts a fleet of agents (tiantong, xiaoguang, xiaozhi...) and multiple channels (Feishu, Telegram...). **When you want an external agent to command OpenClaw directly**, you run into:\n\n- ❌ **Command not found** — openclaw is not on PATH (desktop app embeds it), plain `openclaw` errors out\n- ❌ **Real agents invisible** — env vars missing, `agents list` shows only `main`",
+            "intent": null,
+            "tags": [
+              "Rogue Agent",
+              "llm-unconfirmed"
+            ],
+            "evidence": {},
+            "match_fingerprint": "cc6f515c9807e346dea6f12036f201eb45f287fe179f5f01432c00e2f4f66d56",
+            "occurrences": [
+              {
+                "file": "README.en.md",
+                "start_line": 17,
+                "end_line": null
+              }
+            ]
+          },
+          {
+            "id": "SQP-2",
+            "finding_id": "finding-d8a8060ef5574698bd2f1fb295374821",
+            "category": null,
+            "pattern": null,
+            "severity": "MEDIUM",
+            "confidence": 0.95,
+            "location": {
+              "file": "README.en.md",
+              "start_line": 49,
+              "end_line": 80
+            },
+            "finding": null,
+            "explanation": "The README advertises sending messages, commanding agents, and checking gateway state, but does not prominently warn that these actions can affect external systems such as Feishu, Telegram, and a live multi-agent gateway. This omission is dangerous because a user or host tool may treat the skill as informational while it actually enables real-world side effects and cross-system actions.",
+            "remediation": "Add an explicit safety warning near the usage and quick-start sections stating that commands may send messages, trigger agents, and modify external system state. Require confirmation before any side-effecting action, clearly distinguish read-only commands from mutating commands, and recommend least-privilege credentials plus audit logging.",
+            "code_snippet": null,
+            "intent": null,
+            "tags": [],
+            "evidence": {},
+            "match_fingerprint": null,
+            "occurrences": [
+              {
+                "file": "README.en.md",
+                "start_line": 49,
+                "end_line": 80
+              }
+            ]
+          },
+          {
+            "id": "SQP-1",
+            "finding_id": "finding-80fd961410924e7cb137eeaf970b4a6e",
+            "category": null,
+            "pattern": null,
+            "severity": "MEDIUM",
+            "confidence": 0.92,
+            "location": {
+              "file": "README.en.md",
+              "start_line": 52,
+              "end_line": 56
+            },
+            "finding": null,
+            "explanation": "The README uses broad natural-language invocation examples like 'have tiantong research X' and 'send a Feishu message via OpenClaw' that can be triggered by ordinary user phrasing. In an Agent Skills environment, this increases the chance of overbroad activation and unintended execution of privileged actions against local agents or external channels without a clear intent boundary.",
+            "remediation": "Narrow the invocation contract by adding explicit trigger phrases or a required command prefix, and document that external actions only occur after explicit confirmation. Separate read-only examples from state-changing examples, and add guidance that message sending, task dispatch, and other side-effecting operations require a confirmation step.",
+            "code_snippet": null,
+            "intent": null,
+            "tags": [],
+            "evidence": {},
+            "match_fingerprint": null,
+            "occurrences": [
+              {
+                "file": "README.en.md",
+                "start_line": 52,
+                "end_line": 56
+              }
+            ]
+          },
+          {
+            "id": "SQP-1",
+            "finding_id": "finding-d56d3fc2ef6443958c29c82b95799331",
+            "category": null,
+            "pattern": null,
+            "severity": "MEDIUM",
+            "confidence": 0.88,
+            "location": {
+              "file": "README.md",
+              "start_line": 53,
+              "end_line": 58
+            },
+            "finding": null,
+            "explanation": "The invocation guidance describes conversational phrases without defining strict conditions for when the skill should engage versus when the host assistant should respond normally. In an Agent Skills environment, unclear activation criteria can cause accidental delegation to external tooling and broaden the attack surface for prompt injection or unsafe task forwarding.",
+            "remediation": "Document narrow, deterministic activation rules, such as a dedicated keyword, slash-command, or structured intent schema. State that the skill must not activate on general conversation alone and should ask for confirmation before using OpenClaw when the request could be handled locally.",
+            "code_snippet": null,
+            "intent": null,
+            "tags": [],
+            "evidence": {},
+            "match_fingerprint": null,
+            "occurrences": [
+              {
+                "file": "README.md",
+                "start_line": 53,
+                "end_line": 58
+              }
+            ]
+          },
+          {
+            "id": "SQP-1",
+            "finding_id": "finding-6eab47c8fac147f19ad00362f7b6dceb",
+            "category": null,
+            "pattern": null,
+            "severity": "MEDIUM",
+            "confidence": 0.87,
+            "location": {
+              "file": "README.md",
+              "start_line": 54,
+              "end_line": 54
+            },
+            "finding": null,
+            "explanation": "The README uses broad natural-language examples like asking the tool to let an agent 'research X,' which can overlap with ordinary user requests in host tools that auto-activate skills from loose phrase matching. That creates a prompt/skill routing risk where the commander skill may activate unexpectedly and forward tasks into OpenClaw, potentially causing unintended agent execution.",
+            "remediation": "Add explicit activation boundaries and a required invocation prefix, such as instructing users to call the skill only with a dedicated command format. Clarify that generic phrases should not trigger the skill automatically, and require confirmation before executing agent tasks when intent is ambiguous.",
+            "code_snippet": null,
+            "intent": null,
+            "tags": [],
+            "evidence": {},
+            "match_fingerprint": null,
+            "occurrences": [
+              {
+                "file": "README.md",
+                "start_line": 54,
+                "end_line": 54
+              }
+            ]
+          },
+          {
+            "id": "SQP-2",
+            "finding_id": "finding-f1ef046b679c419bab561321cc6f71cb",
+            "category": null,
+            "pattern": null,
+            "severity": "MEDIUM",
+            "confidence": 0.89,
+            "location": {
+              "file": "README.md",
+              "start_line": 80,
+              "end_line": 82
+            },
+            "finding": null,
+            "explanation": "The README advertises sending messages through external channels like Feishu and Telegram but does not prominently warn that using the skill can cause outbound communications to real recipients. Without an explicit caution and confirmation expectation, users may not realize that normal-looking requests could trigger real external side effects, including data leakage or misdelivery.",
+            "remediation": "Add a clear warning that channel operations send data to external systems and may contact real users. Require explicit user confirmation for outbound messaging, recommend least-privilege channel configuration, and advise redacting sensitive content before transmission.",
+            "code_snippet": null,
+            "intent": null,
+            "tags": [],
+            "evidence": {},
+            "match_fingerprint": null,
+            "occurrences": [
+              {
+                "file": "README.md",
+                "start_line": 80,
+                "end_line": 82
+              }
+            ]
+          },
+          {
+            "id": "AS3",
+            "finding_id": "finding-263156af19524fb5bc3bcc9c2f9ffed2",
+            "category": "Agent Snooping",
+            "pattern": "Skill Enumeration",
+            "severity": "MEDIUM",
+            "confidence": 0.85,
+            "location": {
+              "file": "SKILL.md",
+              "start_line": 21,
+              "end_line": null
+            },
+            "finding": "ls 标准的工具**：Claude Code（`~/.claude/skills/`）/ Codex（`~/.codex/skills",
+            "explanation": "Skill enumerates or reads other installed skills. Access to other skills' SKILL.md files or the skills directory reveals prompt instructions, capabilities, and secrets that should be invisible to peer skills.",
+            "remediation": "Remove all code or instructions that list or read other skills' files or directories. Skills should operate independently; cross-skill access is a privilege escalation.",
+            "code_snippet": "\n通过 OpenClaw CLI 指挥本机小遥Claw / OpenClaw 网关（slug：`xiaoyaoclaw-commander`）。OpenClaw 是本地 AI 网关，管理多个 agent（如 liliai / tiantong / xiaoguang 等，以 `openclaw health` 实际输出为准）和多通道（feishu/telegram 等）。\n\n**兼容任何支持 Agent Skills 标准的工具**：Claude Code（`~/.claude/skills/`）/ Codex（`~/.codex/skills/`）/ OpenCode / Trae / DSH 等——技能目录复制过去即可用，openclaw 命令完全通用。\n\n## 能力范围与写操作声明（权限透明）\n",
+            "intent": null,
+            "tags": [
+              "Agent Snooping",
+              "llm-unconfirmed"
+            ],
+            "evidence": {},
+            "match_fingerprint": "912545ae52f7616060f67f1a7e8317b44d49c0bb817d302cab8cb610c8e92036",
+            "occurrences": [
+              {
+                "file": "SKILL.md",
+                "start_line": 21,
+                "end_line": null
+              }
+            ]
+          },
+          {
+            "id": "AS3",
+            "finding_id": "finding-a3779970cba04bdf96fc9486572c91ad",
+            "category": "Agent Snooping",
+            "pattern": "Skill Enumeration",
+            "severity": "MEDIUM",
+            "confidence": 0.85,
+            "location": {
+              "file": "SKILL.md",
+              "start_line": 21,
+              "end_line": null
+            },
+            "finding": "ls 标准的工具**:Claude Code(`~/.claude/skills/`)/ Codex(`~/.codex/skills",
+            "explanation": "Skill enumerates or reads other installed skills. Access to other skills' SKILL.md files or the skills directory reveals prompt instructions, capabilities, and secrets that should be invisible to peer skills.",
+            "remediation": "Remove all code or instructions that list or read other skills' files or directories. Skills should operate independently; cross-skill access is a privilege escalation.",
+            "code_snippet": "\n通过 OpenClaw CLI 指挥本机小遥Claw / OpenClaw 网关(slug:`xiaoyaoclaw-commander`)。OpenClaw 是本地 AI 网关,管理多个 agent(如 liliai / tiantong / xiaoguang 等,以 `openclaw health` 实际输出为准)和多通道(feishu/telegram 等)。\n\n**兼容任何支持 Agent Skills 标准的工具**:Claude Code(`~/.claude/skills/`)/ Codex(`~/.codex/skills/`)/ OpenCode / Trae / DSH 等——技能目录复制过去即可用,openclaw 命令完全通用。\n\n## 能力范围与写操作声明(权限透明)\n",
+            "intent": null,
+            "tags": [
+              "Agent Snooping",
+              "normalized-view",
+              "llm-unconfirmed"
+            ],
+            "evidence": {},
+            "match_fingerprint": "93510c050becfdab36e97662172e50af9f9f6b3c6ffafa1c420e0512b2feb37b",
+            "occurrences": [
+              {
+                "file": "SKILL.md",
+                "start_line": 21,
+                "end_line": null
+              }
+            ]
+          },
+          {
+            "id": "SQP-1",
+            "finding_id": "finding-5100f5ed0bd54cb3a1cb032da2c07ba6",
+            "category": null,
+            "pattern": null,
+            "severity": "MEDIUM",
+            "confidence": 0.91,
+            "location": {
+              "file": "docs/DESIGN.md",
+              "start_line": 140,
+              "end_line": 140
+            },
+            "finding": null,
+            "explanation": "The design says the skill can be triggered by 'natural language' without defining clear activation boundaries or exclusions. For a high-privilege skill that can dispatch agent tasks and send channel messages, ambiguous triggering increases the risk of accidental invocation, unintended command execution, and prompt-injection-style misuse through ordinary conversation.",
+            "remediation": "Define explicit trigger conditions in SKILL.md and README, such as requiring a fixed invocation phrase, confirmation step, or structured intent markers before any openclaw command runs. Add negative conditions for casual mentions, and require user confirmation before executing agent, message, or state-changing operations.",
+            "code_snippet": null,
+            "intent": null,
+            "tags": [],
+            "evidence": {},
+            "match_fingerprint": null,
+            "occurrences": [
+              {
+                "file": "docs/DESIGN.md",
+                "start_line": 140,
+                "end_line": 140
+              }
+            ]
+          },
+          {
+            "id": "E1",
+            "finding_id": "finding-01152a86422b4039874bb6b607e6132b",
+            "category": "Data Exfiltration",
+            "pattern": "External Transmission",
+            "severity": "MEDIUM",
+            "confidence": 0.6,
+            "location": {
+              "file": "docs/DESIGN.md",
+              "start_line": 161,
+              "end_line": null
+            },
+            "finding": "curl 输出用 GBK 解码破坏 UTF-8 → `cmd /c \"curl ... > file\"` 原样落盘再解析；传 JSON 用 `--data-binary ",
+            "explanation": "Data is being sent to an external URL. This could be legitimate telemetry or data exfiltration. Manual review is recommended.",
+            "remediation": "Verify the destination URL is trusted and necessary. Remove or replace with documented APIs. Ensure no secrets, tokens, or PII are transmitted.",
+            "code_snippet": "\n**发布安全（吸取教训）：**\n- push 前 `git rev-parse --git-dir` 确认仓库边界，`git status --short` 确认 staged 范围\n- PowerShell 捕获 curl 输出用 GBK 解码破坏 UTF-8 → `cmd /c \"curl ... > file\"` 原样落盘再解析；传 JSON 用 `--data-binary @file`\n- PATCH 后 GET 确认生效；git init 后 `git branch -M main`\n- 推送 GitHub 走代理 `http://127.0.0.1:22307`（抽风时 SOCKS5 兜底）\n",
+            "intent": null,
+            "tags": [
+              "Data Exfiltration",
+              "llm-unconfirmed"
+            ],
+            "evidence": {},
+            "match_fingerprint": "054bef31487642ca1d0efb1f3b58683c2977fb4d0f3ad2f58ad765363113a636",
+            "occurrences": [
+              {
+                "file": "docs/DESIGN.md",
+                "start_line": 161,
+                "end_line": null
+              }
+            ]
+          },
+          {
+            "id": "SQP-3",
+            "finding_id": "finding-0e2c66e5a1bd497f810c58b6fa797749",
+            "category": null,
+            "pattern": null,
+            "severity": "MEDIUM",
+            "confidence": 0.88,
+            "location": {
+              "file": "docs/research-00-problem-decomposition.md",
+              "start_line": 1,
+              "end_line": 1
+            },
+            "finding": null,
+            "explanation": "The title and the entire instruction set are written as a prescriptive Chinese-only workflow, and the file does not state that language should be selected based on user preference. Under the policy, forcing a specific language or locale without opt-in is a natural-language policy violation.",
+            "remediation": "Add a note that the skill should follow the user's preferred language, or explicitly offer language selection/opt-in before requiring Chinese output or Chinese-only documentation.",
+            "code_snippet": null,
+            "intent": null,
+            "tags": [
+              "llm-unconfirmed"
+            ],
+            "evidence": {},
+            "match_fingerprint": null,
+            "occurrences": [
+              {
+                "file": "docs/research-00-problem-decomposition.md",
+                "start_line": 1,
+                "end_line": 1
+              }
+            ]
+          },
+          {
+            "id": "AS3",
+            "finding_id": "finding-a0c09c954925488a9b71116d6f9fd5c7",
+            "category": "Agent Snooping",
+            "pattern": "Skill Enumeration",
+            "severity": "MEDIUM",
+            "confidence": 0.85,
+            "location": {
+              "file": "docs/research-00-problem-decomposition.md",
+              "start_line": 29,
+              "end_line": null
+            },
+            "finding": "ls 目录、.claude/skills",
+            "explanation": "Skill enumerates or reads other installed skills. Access to other skills' SKILL.md files or the skills directory reveals prompt instructions, capabilities, and secrets that should be invisible to peer skills.",
+            "remediation": "Remove all code or instructions that list or read other skills' files or directories. Skills should operate independently; cross-skill access is a privilege escalation.",
+            "code_snippet": "\n**子问题**：\n1. **Q1 概念对齐**：OpenClaw 的技能机制是什么（SKILL.md 结构、ClawHub、如何被 agent 加载）？\n2. **Q2 概念对齐**：Claude Code 的技能机制是什么（Agent Skills 目录、.claude/skills、如何被加载）？两个技能体系有什么异同？\n3. **Q3 连接路径**：Claude Code ↔ OpenClaw 之间有哪些官方/社区已实现的集成方式？\n   - 路径候选：MCP server（OpenClaw 暴露 skills 给 Claude Code？）、ACP、CLI 调用、文件共享、ClawHub 技能直接被 Claude Code 用？\n4. **Q4 实操落地**：本机（Windows + OpenClaw 桌面版 + 已装 Claude Code）如何配置实现？有无现成教程/插件/issue？",
+            "intent": null,
+            "tags": [
+              "Agent Snooping",
+              "llm-unconfirmed"
+            ],
+            "evidence": {},
+            "match_fingerprint": "c800257a773f49518e2071e0439b81b1c1965d7e0803e45039e723baca51e12d",
+            "occurrences": [
+              {
+                "file": "docs/research-00-problem-decomposition.md",
+                "start_line": 29,
+                "end_line": null
+              }
+            ]
+          },
+          {
+            "id": "AS3",
+            "finding_id": "finding-e9472861661648bbb02d2e787e3f2e32",
+            "category": "Agent Snooping",
+            "pattern": "Skill Enumeration",
+            "severity": "MEDIUM",
+            "confidence": 0.8,
+            "location": {
+              "file": "docs/research-report-claude-code-openclaw.md",
+              "start_line": 101,
+              "end_line": null
+            },
+            "finding": "skills/openclaw-commander/SKILL.md",
+            "explanation": "Skill enumerates or reads other installed skills. Access to other skills' SKILL.md files or the skills directory reveals prompt instructions, capabilities, and secrets that should be invisible to peer skills.",
+            "remediation": "Remove all code or instructions that list or read other skills' files or directories. Skills should operate independently; cross-skill access is a privilege escalation.",
+            "code_snippet": "\n### 已创建技能：`openclaw-commander`（Claude Code 侧）\n\n位置：`~/.claude/skills/openclaw-commander/SKILL.md`（Agent Skills 标准格式，已验证加载）\n\n技能内容：\n| 命令 | 用途 |",
+            "intent": null,
+            "tags": [
+              "Agent Snooping",
+              "llm-unconfirmed"
+            ],
+            "evidence": {},
+            "match_fingerprint": "fa57f87ab5d0768282786929694d93dde752762a64a87675ae010207ada615d8",
+            "occurrences": [
+              {
+                "file": "docs/research-report-claude-code-openclaw.md",
+                "start_line": 101,
+                "end_line": null
+              }
+            ]
+          },
+          {
+            "id": "SQP-3",
+            "finding_id": "finding-075d008c234d44b1a50dd73defd09119",
+            "category": null,
+            "pattern": null,
+            "severity": "LOW",
+            "confidence": 0.82,
+            "location": {
+              "file": "assets/readme/hero.svg",
+              "start_line": 13,
+              "end_line": 15
+            },
+            "finding": null,
+            "explanation": "This SVG includes prominent Chinese text labels and command examples, but provides no indication that the language is optional or localized. Under the natural-language policy rule, forcing a specific language without user opt-in can be a policy concern even in embedded asset text.",
+            "remediation": "Provide an alternate language version, add bilingual labeling throughout, or document that this asset is intentionally region-specific and justified for its target audience.",
+            "code_snippet": null,
+            "intent": null,
+            "tags": [
+              "llm-unconfirmed"
+            ],
+            "evidence": {},
+            "match_fingerprint": null,
+            "occurrences": [
+              {
+                "file": "assets/readme/hero.svg",
+                "start_line": 13,
+                "end_line": 15
+              }
+            ]
+          }
+        ],
+        "suppressed_count": 0,
+        "suppressed": [],
+        "metadata": {
+          "has_executable_scripts": false,
+          "skillspector_version": "2.11.2",
+          "llm_requested": true,
+          "llm_available": true,
+          "meta_analysis_applied": true,
+          "inference_usage": [
+            {
+              "node": "semantic_developer_intent",
+              "request_kind": "structured_output",
+              "provider": "openai",
+              "model": "gpt-5.4-2026-03-05",
+              "model_source": "provider_response",
+              "usage_source": "provider_response",
+              "prompt_tokens": 4271,
+              "completion_tokens": 14,
+              "cached_tokens": 0,
+              "reasoning_tokens": 0,
+              "total_tokens": 4285
+            },
+            {
+              "node": "semantic_developer_intent",
+              "request_kind": "structured_output",
+              "provider": "openai",
+              "model": "gpt-5.4-2026-03-05",
+              "model_source": "provider_response",
+              "usage_source": "provider_response",
+              "prompt_tokens": 1676,
+              "completion_tokens": 14,
+              "cached_tokens": 0,
+              "reasoning_tokens": 0,
+              "total_tokens": 1690
+            },
+            {
+              "node": "semantic_developer_intent",
+              "request_kind": "structured_output",
+              "provider": "openai",
+              "model": "gpt-5.4-2026-03-05",
+              "model_source": "provider_response",
+              "usage_source": "provider_response",
+              "prompt_tokens": 3625,
+              "completion_tokens": 14,
+              "cached_tokens": 0,
+              "reasoning_tokens": 0,
+              "total_tokens": 3639
+            },
+            {
+              "node": "semantic_developer_intent",
+              "request_kind": "structured_output",
+              "provider": "openai",
+              "model": "gpt-5.4-2026-03-05",
+              "model_source": "provider_response",
+              "usage_source": "provider_response",
+              "prompt_tokens": 4614,
+              "completion_tokens": 14,
+              "cached_tokens": 0,
+              "reasoning_tokens": 0,
+              "total_tokens": 4628
+            },
+            {
+              "node": "semantic_developer_intent",
+              "request_kind": "structured_output",
+              "provider": "openai",
+              "model": "gpt-5.4-2026-03-05",
+              "model_source": "provider_response",
+              "usage_source": "provider_response",
+              "prompt_tokens": 2801,
+              "completion_tokens": 14,
+              "cached_tokens": 0,
+              "reasoning_tokens": 0,
+              "total_tokens": 2815
+            },
+            {
+              "node": "semantic_developer_intent",
+              "request_kind": "structured_output",
+              "provider": "openai",
+              "model": "gpt-5.4-2026-03-05",
+              "model_source": "provider_response",
+              "usage_source": "provider_response",
+              "prompt_tokens": 5133,
+              "completion_tokens": 14,
+              "cached_tokens": 0,
+              "reasoning_tokens": 0,
+              "total_tokens": 5147
+            },
+            {
+              "node": "semantic_developer_intent",
+              "request_kind": "structured_output",
+              "provider": "openai",
+              "model": "gpt-5.4-2026-03-05",
+              "model_source": "provider_response",
+              "usage_source": "provider_response",
+              "prompt_tokens": 4694,
+              "completion_tokens": 14,
+              "cached_tokens": 0,
+              "reasoning_tokens": 0,
+              "total_tokens": 4708
+            },
+            {
+              "node": "semantic_developer_intent",
+              "request_kind": "structured_output",
+              "provider": "openai",
+              "model": "gpt-5.4-2026-03-05",
+              "model_source": "provider_response",
+              "usage_source": "provider_response",
+              "prompt_tokens": 5718,
+              "completion_tokens": 14,
+              "cached_tokens": 0,
+              "reasoning_tokens": 0,
+              "total_tokens": 5732
+            },
+            {
+              "node": "semantic_developer_intent",
+              "request_kind": "structured_output",
+              "provider": "openai",
+              "model": "gpt-5.4-2026-03-05",
+              "model_source": "provider_response",
+              "usage_source": "provider_response",
+              "prompt_tokens": 2178,
+              "completion_tokens": 14,
+              "cached_tokens": 0,
+              "reasoning_tokens": 0,
+              "total_tokens": 2192
+            },
+            {
+              "node": "semantic_quality_policy",
+              "request_kind": "structured_output",
+              "provider": "openai",
+              "model": "gpt-5.4-2026-03-05",
+              "model_source": "provider_response",
+              "usage_source": "provider_response",
+              "prompt_tokens": 1650,
+              "completion_tokens": 14,
+              "cached_tokens": 0,
+              "reasoning_tokens": 0,
+              "total_tokens": 1664
+            },
+            {
+              "node": "semantic_quality_policy",
+              "request_kind": "structured_output",
+              "provider": "openai",
+              "model": "gpt-5.4-2026-03-05",
+              "model_source": "provider_response",
+              "usage_source": "provider_response",
+              "prompt_tokens": 3599,
+              "completion_tokens": 14,
+              "cached_tokens": 0,
+              "reasoning_tokens": 0,
+              "total_tokens": 3613
+            },
+            {
+              "node": "semantic_quality_policy",
+              "request_kind": "structured_output",
+              "provider": "openai",
+              "model": "gpt-5.4-2026-03-05",
+              "model_source": "provider_response",
+              "usage_source": "provider_response",
+              "prompt_tokens": 5107,
+              "completion_tokens": 14,
+              "cached_tokens": 0,
+              "reasoning_tokens": 0,
+              "total_tokens": 5121
+            },
+            {
+              "node": "semantic_quality_policy",
+              "request_kind": "structured_output",
+              "provider": "openai",
+              "model": "gpt-5.4-2026-03-05",
+              "model_source": "provider_response",
+              "usage_source": "provider_response",
+              "prompt_tokens": 2775,
+              "completion_tokens": 142,
+              "cached_tokens": 0,
+              "reasoning_tokens": 0,
+              "total_tokens": 2917
+            },
+            {
+              "node": "semantic_quality_policy",
+              "request_kind": "structured_output",
+              "provider": "openai",
+              "model": "gpt-5.4-2026-03-05",
+              "model_source": "provider_response",
+              "usage_source": "provider_response",
+              "prompt_tokens": 4668,
+              "completion_tokens": 221,
+              "cached_tokens": 0,
+              "reasoning_tokens": 0,
+              "total_tokens": 4889
+            },
+            {
+              "node": "semantic_quality_policy",
+              "request_kind": "structured_output",
+              "provider": "openai",
+              "model": "gpt-5.4-2026-03-05",
+              "model_source": "provider_response",
+              "usage_source": "provider_response",
+              "prompt_tokens": 4245,
+              "completion_tokens": 370,
+              "cached_tokens": 0,
+              "reasoning_tokens": 0,
+              "total_tokens": 4615
+            },
+            {
+              "node": "semantic_quality_policy",
+              "request_kind": "structured_output",
+              "provider": "openai",
+              "model": "gpt-5.4-2026-03-05",
+              "model_source": "provider_response",
+              "usage_source": "provider_response",
+              "prompt_tokens": 4588,
+              "completion_tokens": 467,
+              "cached_tokens": 0,
+              "reasoning_tokens": 0,
+              "total_tokens": 5055
+            },
+            {
+              "node": "semantic_quality_policy",
+              "request_kind": "structured_output",
+              "provider": "openai",
+              "model": "gpt-5.4-2026-03-05",
+              "model_source": "provider_response",
+              "usage_source": "provider_response",
+              "prompt_tokens": 5692,
+              "completion_tokens": 14,
+              "cached_tokens": 0,
+              "reasoning_tokens": 0,
+              "total_tokens": 5706
+            },
+            {
+              "node": "semantic_quality_policy",
+              "request_kind": "structured_output",
+              "provider": "openai",
+              "model": "gpt-5.4-2026-03-05",
+              "model_source": "provider_response",
+              "usage_source": "provider_response",
+              "prompt_tokens": 2152,
+              "completion_tokens": 151,
+              "cached_tokens": 0,
+              "reasoning_tokens": 0,
+              "total_tokens": 2303
+            },
+            {
+              "node": "semantic_security_discovery",
+              "request_kind": "structured_output",
+              "provider": "openai",
+              "model": "gpt-5.4-2026-03-05",
+              "model_source": "provider_response",
+              "usage_source": "provider_response",
+              "prompt_tokens": 1182,
+              "completion_tokens": 14,
+              "cached_tokens": 0,
+              "reasoning_tokens": 0,
+              "total_tokens": 1196
+            },
+            {
+              "node": "semantic_security_discovery",
+              "request_kind": "structured_output",
+              "provider": "openai",
+              "model": "gpt-5.4-2026-03-05",
+              "model_source": "provider_response",
+              "usage_source": "provider_response",
+              "prompt_tokens": 3131,
+              "completion_tokens": 14,
+              "cached_tokens": 0,
+              "reasoning_tokens": 0,
+              "total_tokens": 3145
+            },
+            {
+              "node": "semantic_security_discovery",
+              "request_kind": "structured_output",
+              "provider": "openai",
+              "model": "gpt-5.4-2026-03-05",
+              "model_source": "provider_response",
+              "usage_source": "provider_response",
+              "prompt_tokens": 3777,
+              "completion_tokens": 14,
+              "cached_tokens": 0,
+              "reasoning_tokens": 0,
+              "total_tokens": 3791
+            },
+            {
+              "node": "semantic_security_discovery",
+              "request_kind": "structured_output",
+              "provider": "openai",
+              "model": "gpt-5.4-2026-03-05",
+              "model_source": "provider_response",
+              "usage_source": "provider_response",
+              "prompt_tokens": 4120,
+              "completion_tokens": 14,
+              "cached_tokens": 0,
+              "reasoning_tokens": 0,
+              "total_tokens": 4134
+            },
+            {
+              "node": "semantic_security_discovery",
+              "request_kind": "structured_output",
+              "provider": "openai",
+              "model": "gpt-5.4-2026-03-05",
+              "model_source": "provider_response",
+              "usage_source": "provider_response",
+              "prompt_tokens": 4639,
+              "completion_tokens": 14,
+              "cached_tokens": 0,
+              "reasoning_tokens": 0,
+              "total_tokens": 4653
+            },
+            {
+              "node": "semantic_security_discovery",
+              "request_kind": "structured_output",
+              "provider": "openai",
+              "model": "gpt-5.4-2026-03-05",
+              "model_source": "provider_response",
+              "usage_source": "provider_response",
+              "prompt_tokens": 2307,
+              "completion_tokens": 14,
+              "cached_tokens": 0,
+              "reasoning_tokens": 0,
+              "total_tokens": 2321
+            },
+            {
+              "node": "semantic_security_discovery",
+              "request_kind": "structured_output",
+              "provider": "openai",
+              "model": "gpt-5.4-2026-03-05",
+              "model_source": "provider_response",
+              "usage_source": "provider_response",
+              "prompt_tokens": 4200,
+              "completion_tokens": 14,
+              "cached_tokens": 0,
+              "reasoning_tokens": 0,
+              "total_tokens": 4214
+            },
+            {
+              "node": "semantic_security_discovery",
+              "request_kind": "structured_output",
+              "provider": "openai",
+              "model": "gpt-5.4-2026-03-05",
+              "model_source": "provider_response",
+              "usage_source": "provider_response",
+              "prompt_tokens": 1684,
+              "completion_tokens": 14,
+              "cached_tokens": 0,
+              "reasoning_tokens": 0,
+              "total_tokens": 1698
+            },
+            {
+              "node": "semantic_security_discovery",
+              "request_kind": "structured_output",
+              "provider": "openai",
+              "model": "gpt-5.4-2026-03-05",
+              "model_source": "provider_response",
+              "usage_source": "provider_response",
+              "prompt_tokens": 5224,
+              "completion_tokens": 14,
+              "cached_tokens": 0,
+              "reasoning_tokens": 0,
+              "total_tokens": 5238
+            },
+            {
+              "node": "meta_analyzer",
+              "request_kind": "structured_output",
+              "provider": "openai",
+              "model": "gpt-5.4-2026-03-05",
+              "model_source": "provider_response",
+              "usage_source": "provider_response",
+              "prompt_tokens": 2480,
+              "completion_tokens": 317,
+              "cached_tokens": 0,
+              "reasoning_tokens": 0,
+              "total_tokens": 2797
+            },
+            {
+              "node": "meta_analyzer",
+              "request_kind": "structured_output",
+              "provider": "openai",
+              "model": "gpt-5.4-2026-03-05",
+              "model_source": "provider_response",
+              "usage_source": "provider_response",
+              "prompt_tokens": 4693,
+              "completion_tokens": 281,
+              "cached_tokens": 0,
+              "reasoning_tokens": 0,
+              "total_tokens": 4974
+            },
+            {
+              "node": "meta_analyzer",
+              "request_kind": "structured_output",
+              "provider": "openai",
+              "model": "gpt-5.4-2026-03-05",
+              "model_source": "provider_response",
+              "usage_source": "provider_response",
+              "prompt_tokens": 4550,
+              "completion_tokens": 354,
+              "cached_tokens": 0,
+              "reasoning_tokens": 0,
+              "total_tokens": 4904
+            },
+            {
+              "node": "meta_analyzer",
+              "request_kind": "structured_output",
+              "provider": "openai",
+              "model": "gpt-5.4-2026-03-05",
+              "model_source": "provider_response",
+              "usage_source": "provider_response",
+              "prompt_tokens": 1944,
+              "completion_tokens": 343,
+              "cached_tokens": 0,
+              "reasoning_tokens": 0,
+              "total_tokens": 2287
+            },
+            {
+              "node": "meta_analyzer",
+              "request_kind": "structured_output",
+              "provider": "openai",
+              "model": "gpt-5.4-2026-03-05",
+              "model_source": "provider_response",
+              "usage_source": "provider_response",
+              "prompt_tokens": 4011,
+              "completion_tokens": 389,
+              "cached_tokens": 0,
+              "reasoning_tokens": 0,
+              "total_tokens": 4400
+            },
+            {
+              "node": "meta_analyzer",
+              "request_kind": "structured_output",
+              "provider": "openai",
+              "model": "gpt-5.4-2026-03-05",
+              "model_source": "provider_response",
+              "usage_source": "provider_response",
+              "prompt_tokens": 3706,
+              "completion_tokens": 590,
+              "cached_tokens": 0,
+              "reasoning_tokens": 0,
+              "total_tokens": 4296
+            },
+            {
+              "node": "meta_analyzer",
+              "request_kind": "structured_output",
+              "provider": "openai",
+              "model": "gpt-5.4-2026-03-05",
+              "model_source": "provider_response",
+              "usage_source": "provider_response",
+              "prompt_tokens": 3844,
+              "completion_tokens": 546,
+              "cached_tokens": 0,
+              "reasoning_tokens": 0,
+              "total_tokens": 4390
+            }
+          ],
+          "llm_calls_attempted": 4,
+          "llm_calls_succeeded": 4
+        },
+        "execution_successful": true,
+        "analysis_completeness": {
+          "total_components": 9,
+          "scanned_components": 9,
+          "coverage_percent": 100,
+          "is_complete": false,
+          "status": "partial",
+          "execution_successful": true,
+          "fully_inspected_files": 9,
+          "partially_inspected_files": 0,
+          "entirely_uninspected_files": 0,
+          "ledger_exceptions": [
+            {
+              "outcome": "partial",
+              "phase": "reference_resolution",
+              "reason_code": "reference_unresolved",
+              "message": "A local path-like reference could not be resolved unambiguously.",
+              "path": "SKILL.md",
+              "start_line": 19,
+              "end_line": 19,
+              "fatal": false
+            },
+            {
+              "outcome": "partial",
+              "phase": "reference_resolution",
+              "reason_code": "reference_unresolved",
+              "message": "A local path-like reference could not be resolved unambiguously.",
+              "path": "SKILL.md",
+              "start_line": 34,
+              "end_line": 34,
+              "fatal": false
+            },
+            {
+              "outcome": "partial",
+              "phase": "reference_resolution",
+              "reason_code": "reference_unresolved",
+              "message": "A local path-like reference could not be resolved unambiguously.",
+              "path": "SKILL.md",
+              "start_line": 36,
+              "end_line": 36,
+              "fatal": false
+            },
+            {
+              "outcome": "partial",
+              "phase": "reference_resolution",
+              "reason_code": "reference_unresolved",
+              "message": "A local path-like reference could not be resolved unambiguously.",
+              "path": "SKILL.md",
+              "start_line": 60,
+              "end_line": 60,
+              "fatal": false
+            },
+            {
+              "outcome": "partial",
+              "phase": "reference_resolution",
+              "reason_code": "reference_unresolved",
+              "message": "A local path-like reference could not be resolved unambiguously.",
+              "path": "SKILL.md",
+              "start_line": 91,
+              "end_line": 91,
+              "fatal": false
+            },
+            {
+              "outcome": "partial",
+              "phase": "reference_resolution",
+              "reason_code": "reference_unresolved",
+              "message": "A local path-like reference could not be resolved unambiguously.",
+              "path": "SKILL.md",
+              "start_line": 93,
+              "end_line": 93,
+              "fatal": false
+            },
+            {
+              "outcome": "partial",
+              "phase": "reference_resolution",
+              "reason_code": "reference_unresolved",
+              "message": "A local path-like reference could not be resolved unambiguously.",
+              "path": "SKILL.md",
+              "start_line": 98,
+              "end_line": 98,
+              "fatal": false
+            },
+            {
+              "outcome": "partial",
+              "phase": "reference_resolution",
+              "reason_code": "reference_unresolved",
+              "message": "A local path-like reference could not be resolved unambiguously.",
+              "path": "SKILL.md",
+              "start_line": 101,
+              "end_line": 101,
+              "fatal": false
+            },
+            {
+              "outcome": "partial",
+              "phase": "reference_resolution",
+              "reason_code": "reference_unresolved",
+              "message": "A local path-like reference could not be resolved unambiguously.",
+              "path": "SKILL.md",
+              "start_line": 103,
+              "end_line": 103,
+              "fatal": false
+            },
+            {
+              "outcome": "partial",
+              "phase": "reference_resolution",
+              "reason_code": "reference_unresolved",
+              "message": "A local path-like reference could not be resolved unambiguously.",
+              "path": "SKILL.md",
+              "start_line": 111,
+              "end_line": 111,
+              "fatal": false
+            },
+            {
+              "outcome": "partial",
+              "phase": "reference_resolution",
+              "reason_code": "reference_unresolved",
+              "message": "A local path-like reference could not be resolved unambiguously.",
+              "path": "SKILL.md",
+              "start_line": 112,
+              "end_line": 112,
+              "fatal": false
+            },
+            {
+              "outcome": "partial",
+              "phase": "reference_resolution",
+              "reason_code": "reference_unresolved",
+              "message": "A local path-like reference could not be resolved unambiguously.",
+              "path": "SKILL.md",
+              "start_line": 113,
+              "end_line": 113,
+              "fatal": false
+            },
+            {
+              "outcome": "partial",
+              "phase": "reference_resolution",
+              "reason_code": "reference_unresolved",
+              "message": "A local path-like reference could not be resolved unambiguously.",
+              "path": "SKILL.md",
+              "start_line": 114,
+              "end_line": 114,
+              "fatal": false
+            },
+            {
+              "outcome": "partial",
+              "phase": "reference_resolution",
+              "reason_code": "reference_unresolved",
+              "message": "A local path-like reference could not be resolved unambiguously.",
+              "path": "SKILL.md",
+              "start_line": 122,
+              "end_line": 122,
+              "fatal": false
+            },
+            {
+              "outcome": "partial",
+              "phase": "reference_resolution",
+              "reason_code": "reference_unresolved",
+              "message": "A local path-like reference could not be resolved unambiguously.",
+              "path": "SKILL.md",
+              "start_line": 129,
+              "end_line": 129,
+              "fatal": false
+            },
+            {
+              "outcome": "partial",
+              "phase": "reference_resolution",
+              "reason_code": "reference_unresolved",
+              "message": "A local path-like reference could not be resolved unambiguously.",
+              "path": "SKILL.md",
+              "start_line": 155,
+              "end_line": 155,
+              "fatal": false
+            },
+            {
+              "outcome": "partial",
+              "phase": "reference_resolution",
+              "reason_code": "reference_unresolved",
+              "message": "A local path-like reference could not be resolved unambiguously.",
+              "path": "SKILL.md",
+              "start_line": 186,
+              "end_line": 186,
+              "fatal": false
+            }
+          ],
+          "scope_exclusions": [
+            {
+              "outcome": "out_of_scope",
+              "phase": "static",
+              "reason_code": "binary_content",
+              "message": "Binary content is unsupported by this analyzer.",
+              "path": "assets/readme/community-qr.png",
+              "start_line": null,
+              "end_line": null,
+              "fatal": false,
+              "analyzers": [
+                "static_patterns_agent_snooping",
+                "static_patterns_anti_refusal",
+                "static_patterns_data_exfiltration",
+                "static_patterns_deserialization",
+                "static_patterns_excessive_agency",
+                "static_patterns_harmful_content",
+                "static_patterns_memory_poisoning",
+                "static_patterns_output_handling",
+                "static_patterns_privilege_escalation",
+                "static_patterns_prompt_injection",
+                "static_patterns_rogue_agent",
+                "static_patterns_ssrf",
+                "static_patterns_supply_chain",
+                "static_patterns_system_prompt_leakage",
+                "static_patterns_tool_misuse"
+              ]
+            }
+          ],
+          "analyzer_statuses": [
+            {
+              "analyzer_id": "artifact_integrity",
+              "status": "completed",
+              "planned_work": 10,
+              "completed": 10,
+              "partial": 0,
+              "skipped": 0,
+              "failed": 0,
+              "unaccounted": 0
+            },
+            {
+              "analyzer_id": "behavioral_ast",
+              "status": "not_applicable",
+              "planned_work": 0,
+              "completed": 0,
+              "partial": 0,
+              "skipped": 0,
+              "failed": 0,
+              "unaccounted": 0,
+              "reason_code": "no_applicable_files",
+              "message": "No files matched this analyzer's applicability contract."
+            },
+            {
+              "analyzer_id": "behavioral_taint_tracking",
+              "status": "not_applicable",
+              "planned_work": 0,
+              "completed": 0,
+              "partial": 0,
+              "skipped": 0,
+              "failed": 0,
+              "unaccounted": 0,
+              "reason_code": "no_applicable_files",
+              "message": "No files matched this analyzer's applicability contract."
+            },
+            {
+              "analyzer_id": "bundled_execution_surface",
+              "status": "not_applicable",
+              "planned_work": 0,
+              "completed": 0,
+              "partial": 0,
+              "skipped": 0,
+              "failed": 0,
+              "unaccounted": 0,
+              "reason_code": "no_applicable_files",
+              "message": "No files matched this analyzer's applicability contract."
+            },
+            {
+              "analyzer_id": "mcp_least_privilege",
+              "status": "not_applicable",
+              "planned_work": 0,
+              "completed": 0,
+              "partial": 0,
+              "skipped": 0,
+              "failed": 0,
+              "unaccounted": 0,
+              "reason_code": "no_applicable_files",
+              "message": "No files matched this analyzer's applicability contract."
+            },
+            {
+              "analyzer_id": "mcp_rug_pull",
+              "status": "completed",
+              "planned_work": 10,
+              "completed": 10,
+              "partial": 0,
+              "skipped": 0,
+              "failed": 0,
+              "unaccounted": 0
+            },
+            {
+              "analyzer_id": "mcp_tool_poisoning",
+              "status": "completed",
+              "planned_work": 1,
+              "completed": 1,
+              "partial": 0,
+              "skipped": 0,
+              "failed": 0,
+              "unaccounted": 0
+            },
+            {
+              "analyzer_id": "meta_analyzer",
+              "status": "completed",
+              "planned_work": 7,
+              "completed": 7,
+              "partial": 0,
+              "skipped": 0,
+              "failed": 0,
+              "unaccounted": 0
+            },
+            {
+              "analyzer_id": "semantic_developer_intent",
+              "status": "completed",
+              "planned_work": 9,
+              "completed": 9,
+              "partial": 0,
+              "skipped": 0,
+              "failed": 0,
+              "unaccounted": 0
+            },
+            {
+              "analyzer_id": "semantic_quality_policy",
+              "status": "completed",
+              "planned_work": 9,
+              "completed": 9,
+              "partial": 0,
+              "skipped": 0,
+              "failed": 0,
+              "unaccounted": 0
+            },
+            {
+              "analyzer_id": "semantic_security_discovery",
+              "status": "completed",
+              "planned_work": 9,
+              "completed": 9,
+              "partial": 0,
+              "skipped": 0,
+              "failed": 0,
+              "unaccounted": 0
+            },
+            {
+              "analyzer_id": "static_patterns_agent_snooping",
+              "status": "completed",
+              "planned_work": 10,
+              "completed": 9,
+              "partial": 0,
+              "skipped": 0,
+              "failed": 1,
+              "unaccounted": 0
+            },
+            {
+              "analyzer_id": "static_patterns_anti_refusal",
+              "status": "completed",
+              "planned_work": 10,
+              "completed": 9,
+              "partial": 0,
+              "skipped": 0,
+              "failed": 1,
+              "unaccounted": 0
+            },
+            {
+              "analyzer_id": "static_patterns_data_exfiltration",
+              "status": "completed",
+              "planned_work": 10,
+              "completed": 9,
+              "partial": 0,
+              "skipped": 0,
+              "failed": 1,
+              "unaccounted": 0
+            },
+            {
+              "analyzer_id": "static_patterns_deserialization",
+              "status": "completed",
+              "planned_work": 10,
+              "completed": 9,
+              "partial": 0,
+              "skipped": 0,
+              "failed": 1,
+              "unaccounted": 0
+            },
+            {
+              "analyzer_id": "static_patterns_excessive_agency",
+              "status": "completed",
+              "planned_work": 10,
+              "completed": 9,
+              "partial": 0,
+              "skipped": 0,
+              "failed": 1,
+              "unaccounted": 0
+            },
+            {
+              "analyzer_id": "static_patterns_harmful_content",
+              "status": "completed",
+              "planned_work": 10,
+              "completed": 9,
+              "partial": 0,
+              "skipped": 0,
+              "failed": 1,
+              "unaccounted": 0
+            },
+            {
+              "analyzer_id": "static_patterns_memory_poisoning",
+              "status": "completed",
+              "planned_work": 10,
+              "completed": 9,
+              "partial": 0,
+              "skipped": 0,
+              "failed": 1,
+              "unaccounted": 0
+            },
+            {
+              "analyzer_id": "static_patterns_output_handling",
+              "status": "completed",
+              "planned_work": 10,
+              "completed": 9,
+              "partial": 0,
+              "skipped": 0,
+              "failed": 1,
+              "unaccounted": 0
+            },
+            {
+              "analyzer_id": "static_patterns_privilege_escalation",
+              "status": "completed",
+              "planned_work": 10,
+              "completed": 9,
+              "partial": 0,
+              "skipped": 0,
+              "failed": 1,
+              "unaccounted": 0
+            },
+            {
+              "analyzer_id": "static_patterns_prompt_injection",
+              "status": "completed",
+              "planned_work": 10,
+              "completed": 9,
+              "partial": 0,
+              "skipped": 0,
+              "failed": 1,
+              "unaccounted": 0
+            },
+            {
+              "analyzer_id": "static_patterns_rogue_agent",
+              "status": "completed",
+              "planned_work": 10,
+              "completed": 9,
+              "partial": 0,
+              "skipped": 0,
+              "failed": 1,
+              "unaccounted": 0
+            },
+            {
+              "analyzer_id": "static_patterns_ssrf",
+              "status": "completed",
+              "planned_work": 10,
+              "completed": 9,
+              "partial": 0,
+              "skipped": 0,
+              "failed": 1,
+              "unaccounted": 0
+            },
+            {
+              "analyzer_id": "static_patterns_supply_chain",
+              "status": "completed",
+              "planned_work": 10,
+              "completed": 9,
+              "partial": 0,
+              "skipped": 0,
+              "failed": 1,
+              "unaccounted": 0
+            },
+            {
+              "analyzer_id": "static_patterns_system_prompt_leakage",
+              "status": "completed",
+              "planned_work": 10,
+              "completed": 9,
+              "partial": 0,
+              "skipped": 0,
+              "failed": 1,
+              "unaccounted": 0
+            },
+            {
+              "analyzer_id": "static_patterns_tool_misuse",
+              "status": "completed",
+              "planned_work": 10,
+              "completed": 9,
+              "partial": 0,
+              "skipped": 0,
+              "failed": 1,
+              "unaccounted": 0
+            },
+            {
+              "analyzer_id": "static_yara",
+              "status": "completed",
+              "planned_work": 10,
+              "completed": 10,
+              "partial": 0,
+              "skipped": 0,
+              "failed": 0,
+              "unaccounted": 0
+            }
+          ],
+          "references": [
+            {
+              "source_path": "SKILL.md",
+              "line": 19,
+              "column": 168,
+              "evidence": "网关，管理多个 agent（如 liliai / tiantong / xiaoguang 等，以 `openclaw health` 实际输出为准）和多通道（feishu/telegram 等）。",
+              "target_path": null,
+              "status": "missing",
+              "disposition": "partial"
+            },
+            {
+              "source_path": "SKILL.md",
+              "line": 34,
+              "column": 12,
+              "evidence": "- 不读取、不修改 `openclaw.json` 等任何配置文件（配置变更走 OpenClaw 的 config.patch，本技能不碰）",
+              "target_path": null,
+              "status": "missing",
+              "disposition": "partial"
+            },
+            {
+              "source_path": "SKILL.md",
+              "line": 36,
+              "column": 26,
+              "evidence": "- 不联网下载、不安装任何依赖（零依赖技能，无需 pip/npm 安装）",
+              "target_path": null,
+              "status": "missing",
+              "disposition": "partial"
+            },
+            {
+              "source_path": "SKILL.md",
+              "line": 60,
+              "column": 34,
+              "evidence": "> - macOS：`~/Library/Application Support/xiaoyaoclaw/runtime/openclaw/state`（同上结构）",
+              "target_path": null,
+              "status": "missing",
+              "disposition": "partial"
+            },
+            {
+              "source_path": "SKILL.md",
+              "line": 91,
+              "column": 39,
+              "evidence": "if (Test-Path (Join-Path $stateDir \"openclaw.json\")) {",
+              "target_path": null,
+              "status": "missing",
+              "disposition": "partial"
+            },
+            {
+              "source_path": "SKILL.md",
+              "line": 93,
+              "column": 54,
+              "evidence": "$env:OPENCLAW_CONFIG_PATH = Join-Path $stateDir \"openclaw.json\"",
+              "target_path": null,
+              "status": "missing",
+              "disposition": "partial"
+            },
+            {
+              "source_path": "SKILL.md",
+              "line": 98,
+              "column": 19,
+              "evidence": "### macOS / Linux（bash/zsh）",
+              "target_path": null,
+              "status": "missing",
+              "disposition": "partial"
+            },
+            {
+              "source_path": "SKILL.md",
+              "line": 101,
+              "column": 69,
+              "evidence": "# 1) 小遥桌面版最优先（xiaoyaoclaw，Electron userData = ~/Library/Application Support/xiaoyaoclaw）",
+              "target_path": null,
+              "status": "missing",
+              "disposition": "partial"
+            },
+            {
+              "source_path": "SKILL.md",
+              "line": 103,
+              "column": 5,
+              "evidence": "\"$HOME/Library/Application Support/xiaoyaoclaw/runtime/openclaw/bin/openclaw\"; do",
+              "target_path": null,
+              "status": "missing",
+              "disposition": "partial"
+            },
+            {
+              "source_path": "SKILL.md",
+              "line": 103,
+              "column": 30,
+              "evidence": "\"$HOME/Library/Application Support/xiaoyaoclaw/runtime/openclaw/bin/openclaw\"; do",
+              "target_path": null,
+              "status": "missing",
+              "disposition": "partial"
+            },
+            {
+              "source_path": "SKILL.md",
+              "line": 111,
+              "column": 7,
+              "evidence": "\"$HOME/Library/Application Support/OpenClaw/runtime/openclaw/bin/openclaw\" \\",
+              "target_path": null,
+              "status": "missing",
+              "disposition": "partial"
+            },
+            {
+              "source_path": "SKILL.md",
+              "line": 111,
+              "column": 32,
+              "evidence": "\"$HOME/Library/Application Support/OpenClaw/runtime/openclaw/bin/openclaw\" \\",
+              "target_path": null,
+              "status": "missing",
+              "disposition": "partial"
+            },
+            {
+              "source_path": "SKILL.md",
+              "line": 112,
+              "column": 7,
+              "evidence": "\"$HOME/Library/Application Support/openclaw/runtime/openclaw/bin/openclaw\" \\",
+              "target_path": null,
+              "status": "missing",
+              "disposition": "partial"
+            },
+            {
+              "source_path": "SKILL.md",
+              "line": 112,
+              "column": 32,
+              "evidence": "\"$HOME/Library/Application Support/openclaw/runtime/openclaw/bin/openclaw\" \\",
+              "target_path": null,
+              "status": "missing",
+              "disposition": "partial"
+            },
+            {
+              "source_path": "SKILL.md",
+              "line": 113,
+              "column": 7,
+              "evidence": "\"$HOME/.openclaw/bin/openclaw\" \\",
+              "target_path": null,
+              "status": "missing",
+              "disposition": "partial"
+            },
+            {
+              "source_path": "SKILL.md",
+              "line": 114,
+              "column": 7,
+              "evidence": "\"$HOME/.local/bin/openclaw\" \\",
+              "target_path": null,
+              "status": "missing",
+              "disposition": "partial"
+            },
+            {
+              "source_path": "SKILL.md",
+              "line": 122,
+              "column": 16,
+              "evidence": "OC=\"$(find \"$HOME/Library/Application Support\" \"$HOME/.openclaw\" \"$HOME/.local/bin\" -path \"*/runtime/openclaw/bin/openclaw\" -o -name openclaw -type f 2>/dev/nul",
+              "target_path": null,
+              "status": "missing",
+              "disposition": "partial"
+            },
+            {
+              "source_path": "SKILL.md",
+              "line": 122,
+              "column": 52,
+              "evidence": "OC=\"$(find \"$HOME/Library/Application Support\" \"$HOME/.openclaw\" \"$HOME/.local/bin\" -path \"*/runtime/openclaw/bin/openclaw\" -o -name openclaw -type f 2>/dev/nul",
+              "target_path": null,
+              "status": "missing",
+              "disposition": "partial"
+            },
+            {
+              "source_path": "SKILL.md",
+              "line": 122,
+              "column": 70,
+              "evidence": "OC=\"$(find \"$HOME/Library/Application Support\" \"$HOME/.openclaw\" \"$HOME/.local/bin\" -path \"*/runtime/openclaw/bin/openclaw\" -o -name openclaw -type f 2>/dev/nul",
+              "target_path": null,
+              "status": "missing",
+              "disposition": "partial"
+            },
+            {
+              "source_path": "SKILL.md",
+              "line": 129,
+              "column": 3,
+              "evidence": "- macOS/Linux（bash）：`\"$OC\" <参数>`",
+              "target_path": null,
+              "status": "missing",
+              "disposition": "partial"
+            },
+            {
+              "source_path": "SKILL.md",
+              "line": 155,
+              "column": 41,
+              "evidence": "message send --channel feishu --target <user/chat id> -m \"<消息内容>\"",
+              "target_path": null,
+              "status": "missing",
+              "disposition": "partial"
+            },
+            {
+              "source_path": "SKILL.md",
+              "line": 186,
+              "column": 43,
+              "evidence": "| \"OpenClaw 里有哪些 agent\" | `agents list`（含 Identity/Model/Routing） |",
+              "target_path": null,
+              "status": "missing",
+              "disposition": "partial"
+            }
+          ],
+          "limitations": [],
+          "findings_before_filtering": 15,
+          "findings_after_filtering": 15
+        }
+      }
+    }
+  },
+  "signature": {
+    "status": "unsigned"
+  }
+}

@@ -45,15 +45,23 @@ git clone https://github.com/dtsola/xiaoyaoclaw-commander
 ```
 
 > No need to install into OpenClaw's skills directory — this skill is for **external tools** commanding OpenClaw.
+> 
+> 🔒 **No persistence**: no cron jobs, no daemons, no startup scripts, no cross-session state files; env vars are set for the current shell only and no configuration file is touched.
+> 
+> 🌐 **Language is optional**: docs default to Chinese — ask in English (or any language) and the skill answers in it.
+> 
+> ⚠️ **Real-world side effects**: this is not a read-only tool — `agent` makes a real agent work (it may change files or send messages), and `message send` **delivers to real recipients** (Feishu, Telegram, ...). So 🟢 read-only commands (`health` / `agents list` / `sessions`) run directly, while 🟠 task dispatch and 🔴 channel sends **restate the exact target and content and wait for your confirmation first**. Check for sensitive content before sending.
 
 ## Usage
 
 1. Put the skill in your tool's skills directory (Claude Code / Codex / OpenCode / Trae / DSH...)
-2. Tell the tool "**have tiantong research X**" or "**send a Feishu message via OpenClaw**" — the skill will:
+2. Tell the tool "**have tiantong research X**" or "**send a Feishu message via OpenClaw**" (name the target agent or channel — it asks when that is unclear) — the skill will:
    - Detect the openclaw binary + fill in env vars
    - Map the agent name to its id via `agents list`
    - Run tasks / send messages / check status through the Gateway
 3. Query commands: "list the OpenClaw agents", "is the gateway healthy?"
+
+**When it should not fire**: chatting about OpenClaw without asking it to act; asking about OpenClaw docs, config format or internals (answer directly); a session that already runs inside OpenClaw; or a vague "send a message" / "research X" that neither routes through OpenClaw nor names a target.
 
 ## 🚀 Quick Start (3 steps, 5 minutes)
 

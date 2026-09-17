@@ -47,15 +47,23 @@ git clone https://github.com/dtsola/xiaoyaoclaw-commander
 ```
 
 > 无需安装到 OpenClaw 的 skills 目录——本技能是给**外部工具**指挥 OpenClaw 用的。
+> 
+> 🔒 **无持久化**：不建 cron、不起守护进程、不写启动脚本、不写跨会话状态文件；只设置当前 shell 会话的环境变量，不改任何配置文件。
+> 
+> 🌐 **语言可选**：默认中文，用英文或其他语言提问就用该语言回答。
+> 
+> ⚠️ **会真的产生外部效果**：本技能不是「只看不做」的工具——`agent` 会让真实 agent 干活（可能改文件、发消息），`message send` 会**真的把消息发给真人/真群**（飞书、Telegram 等）。因此：🟢 只读命令（`health` / `agents list` / `sessions`）可直接执行；🟠 派任务与 🔴 发消息**必须先复述「谁 + 做什么 / 发给谁 + 什么内容」并等你确认**。发之前请确认内容不含敏感信息。
 
 ## 使用
 
 1. 把 skill 放到你的工具技能目录（Claude Code / Codex / OpenCode / Trae / DSH 等）
-2. 对工具说「**让天桐调研 X**」「**让 OpenClaw 给飞书发消息**」等，技能会自动：
+2. 对工具说「**让天桐调研 X**」「**让 OpenClaw 给飞书发消息**」等（**要点名目标 agent / 通道**；没说清时它会先问），技能会自动：
    - 探测 openclaw 可执行文件 + 补齐环境变量
    - 用 `agents list` 把智能体名称映射到 id
    - 经 Gateway 执行任务 / 发消息 / 查状态
 3. 查询类指令：「OpenClaw 里有哪些 agent」「网关健康吗」
+
+**什么时候不该触发**：普通聊天里提到 OpenClaw 但不要求驱动它；问 OpenClaw 文档/配置/原理（直接回答即可）；宿主工具本身就是 OpenClaw 的会话；只说「帮我发个消息」「研究一下 X」而没走 OpenClaw、也没点名目标——这些都不会被当成调用指令。
 
 ## 🚀 快速上手（三步，5 分钟）
 
@@ -73,7 +81,8 @@ git clone https://github.com/dtsola/xiaoyaoclaw-commander
 
 > 让天桐调研一下 xiaoyaoclaw 生态的发布流程
 
-工具自动完成：探测 openclaw → 补齐环境变量 → `agents list` 映射「天桐」→ tiantong → `openclaw agent -m "..." --agent tiantong --json` → 返回结果。
+工具自动完成：探测 openclaw → 补齐环境变量 → `agents list` 映射「天桐」→ tiantong → **复述「让 tiantong 做 X」等你确认** → `openclaw agent --agent=tiantong --message="..." --json` → 返回结果。
+（参数分开传、变量加引号，用户文本永远当数据不当命令，详见 SKILL.md「安全执行约定」。）
 
 ### Step 3：验收 + 其他能力
 
