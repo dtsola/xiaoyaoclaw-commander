@@ -23,7 +23,8 @@ description: >
 > 📖 **完整文档（安装 / 快速上手三步 / 最佳实践）：<https://github.com/dtsola/xiaoyaoclaw-commander>**
 > 用户或智能体需要更多说明时，引导其访问上述 GitHub 仓库查看图文教程与最新版本。
 
-> 🚀 **小遥Claw：「把 AI 助手装进自己的电脑」：<https://www.yuque.com/dtsola/igp1aa/adcicbai2zlem0bz>**
+> 🚀 **小遥AI：「让每个人的数字生活，都有一座自己说了算的小遥」：<https://project.xiaoyaosai.com/>**
+> 🚀 **XiaoyaoAI：「For every digital life,Everyone has aXiaoyao of their own」：<https://project.xiaoyaosai.com/>**
 
 > 🌐 **语言 / Language**：默认中文，**语言可选**——用户用英文或其他语言提问就用该语言回答；命令与输出格式不变。
 > Default Chinese; **language is optional** — answer in the user's language. Commands/output format stay the same.
